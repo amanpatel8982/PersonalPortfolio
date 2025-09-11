@@ -58,7 +58,7 @@ const Navbar = () => {
             className="relative group flex items-center gap-1 text-white hover:text-indigo-900"
           >
             <Users size={18} className="text-indigo-700" />
-                   PORTFOLIO
+                   PROJECT
             <span className="absolute bottom-[-4px] left-0 w-0 h-[2px] bg-indigo-700 transition-all duration-300 group-hover:w-full"></span>
           </Link>
 

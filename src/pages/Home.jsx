@@ -6,6 +6,7 @@ import About from "./About";
 import Skill from "./Skill";
 import Portfolio from "./Portfolio";
 import Contact from "./Contact";
+import Certificate from "./Certificate";
 
 export default function Home() {
   const cursorRef = useRef(null);
@@ -27,8 +28,8 @@ export default function Home() {
         {/* 🌟 Cursor Blur Effect */}
         <div
           ref={cursorRef}
-          className="fixed w-72 h-72 rounded-full pointer-events-none 
-                     bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 
+          className="fixed w-92 h-92 rounded-full pointer-events-none 
+                     bg-gradient-to-r from-cyan-800 via-purple-800 to-pink-800 
                      opacity-60 blur-3xl transform -translate-x-1/2 -translate-y-1/2 z-50"
         ></div>
 
@@ -168,6 +169,7 @@ export default function Home() {
       <About />
       <Skill />
       <Portfolio />
+      <Certificate />
       <Contact />
     </>
   );

@@ -1,37 +1,114 @@
 import { useState } from "react";
-import { Code, Award } from "lucide-react";
+import { Code, Database } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState("projects");
-  const [selectedCert, setSelectedCert] = useState(null); // modal ke liye
+  const [activeTab, setActiveTab] = useState("frontend");
+  const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  // Animation variants (har ek direction alag)
-  const fadeIn = (direction = "up", delay = 0) => {
-    return {
-      hidden: {
-        opacity: 0,
-        x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
-        y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+  // Animation variants
+  const fadeIn = (direction = "up", delay = 0) => ({
+    hidden: {
+      opacity: 0,
+      x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
+      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+    },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        delay,
+        duration: 0.8,
+        ease: "easeOut",
       },
-      show: {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        transition: {
-          delay,
-          duration: 0.8,
-          ease: "easeOut",
-        },
-      },
-    };
-  };
+    },
+  });
 
-  // Har card ke liye direction decide karna
   const directions = ["left", "right", "up", "down"];
+
+  // ✅ Frontend Projects
+  const frontendProjects = [
+    {
+      title: "Event Planner",
+      desc: "Real-time event scheduling and management with AI integration.",
+      img: "/project1.jpg",
+      details:
+        "This Event Planner app allows users to create, update, and manage events in real time. It uses AI for smart scheduling, conflict detection, and optimized reminders. Built using React, Node.js, and MongoDB.",
+      tech: ["React", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
+      demo: "#",
+      video: "/event.mp4",
+    },
+    {
+      title: "Chatting App",
+      desc: "A real-time chat application with private rooms.",
+      img: "/project2.jpg",
+      details:
+        "This Chatting App enables instant messaging with real-time updates using Socket.IO. Features include group chats, private rooms, and media sharing. Backend is powered by Express.js with JWT authentication.",
+      tech: ["React", "Express.js", "Socket.IO", "JWT"],
+      demo: "#",
+      video: "/chat.mp4",
+    },
+    {
+      title: "MyHealthFile",
+      desc: "Digital health records management platform.",
+      img: "/project3.jpg",
+      details:
+        "MyHealthFile is a secure medical platform where patients can store, manage, and share their health records with doctors. Includes role-based dashboards, appointment scheduling, and report uploads.",
+      tech: ["React", "Django", "SQLite", "TailwindCSS"],
+      demo: "#",
+      video: "/myhealth.gif",
+    },
+  ];
+
+  // ✅ Backend Projects
+  const backendProjects = [
+     {
+      title: "Event Planner",
+      desc: "Real-time event scheduling and management with AI integration.",
+      img: "/project1.jpg",
+      details:
+        "This Event Planner app allows users to create, update, and manage events in real time. It uses AI for smart scheduling, conflict detection, and optimized reminders. Built using React, Node.js, and MongoDB.",
+      tech: ["React", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
+      demo: "#",
+      video: "/event.mp4",
+    },
+    {
+      title: "Chatting App",
+      desc: "A real-time chat application with private rooms.",
+      img: "/project2.jpg",
+      details:
+        "This Chatting App enables instant messaging with real-time updates using Socket.IO. Features include group chats, private rooms, and media sharing. Backend is powered by Express.js with JWT authentication.",
+      tech: ["React", "Express.js", "Socket.IO", "JWT"],
+      demo: "#",
+      video: "/chat.mp4",
+    },
+    {
+      title: "MyHealthFile",
+      desc: "Digital health records management platform.",
+      img: "/project3.jpg",
+      details:
+        "MyHealthFile is a secure medical platform where patients can store, manage, and share their health records with doctors. Includes role-based dashboards, appointment scheduling, and report uploads.",
+      tech: ["React", "Django", "SQLite", "TailwindCSS"],
+      demo: "#",
+      video: "/myhealth.gif",
+    },
+  ];
+
+  // ✅ Tabs
+  const tabs = [
+    { id: "frontend", label: "Front-End", icon: <Code /> },
+    { id: "backend", label: "Back-End", icon: <Database /> },
+  ];
+
+  // ✅ Choose data based on active tab
+  const displayedProjects =
+    activeTab === "frontend" ? frontendProjects : backendProjects;
 
   return (
     <section className="py-20 px-4 md:px-12 bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* Heading */}
       <motion.h2
         variants={fadeIn("up", 0.2)}
         initial="hidden"
@@ -41,6 +118,7 @@ export default function Portfolio() {
         Portfolio Showcase
       </motion.h2>
 
+      {/* Subheading */}
       <motion.p
         variants={fadeIn("up", 0.4)}
         initial="hidden"
@@ -59,10 +137,7 @@ export default function Portfolio() {
         animate="show"
         className="flex flex-wrap justify-center gap-3 md:gap-6 mt-8 bg-gray-800 p-2 rounded-xl"
       >
-        {[
-          { id: "projects", label: "Projects", icon: <Code /> },
-          { id: "certificates", label: "Certificates", icon: <Award /> },
-        ].map((tab) => (
+        {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
@@ -77,95 +152,101 @@ export default function Portfolio() {
         ))}
       </motion.div>
 
-      {/* Content */}
-      <div className="mt-12">
-        {/* Projects Section */}
-        {activeTab === "projects" && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Event Planner",
-                desc: "Real-time mock interviews with AI.",
-                img: "/project1.jpg",
-              },
-              {
-                title: "Chatting App",
-                desc: "A social app to connect instantly.",
-                img: "/project2.jpg",
-              },
-              {
-                title: "MyHealthFile",
-                desc: "A video streaming app for entertainment.",
-                img: "/project3.jpg",
-              },
-            ].map((p, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn(directions[i % directions.length], i * 0.3)}
-                initial="hidden"
-                animate="show"
-                className="bg-gray-800 rounded-2xl shadow-lg shadow-purple-500/20 overflow-hidden"
-              >
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="w-full h-56 md:h-80 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg md:text-xl font-bold">{p.title}</h3>
-                  <p className="text-gray-400 text-sm mt-2">{p.desc}</p>
-                  <div className="flex gap-4 mt-4">
-                    <a className="text-purple-400 hover:underline" href="#">
-                      Live Demo
-                    </a>
-                    <a className="text-gray-300 hover:text-white" href="#">
-                      Details →
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {/* Certificates Section */}
-        {activeTab === "certificates" && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["/cert1.png", "/cert2.png", "/cert3.png"].map((c, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn(directions[i % directions.length], i * 0.3)}
-                initial="hidden"
-                animate="show"
-                onClick={() => setSelectedCert(c)} // click par modal open
-                className="bg-gray-900 rounded-xl shadow-lg shadow-purple-500/20 overflow-hidden cursor-pointer hover:scale-105 transition-transform"
-              >
-                <img
-                  src={c}
-                  alt="Certificate"
-                  className="w-full h-48 md:h-56 object-contain"
-                />
-              </motion.div>
-            ))}
-          </div>
-        )}
+      {/* Projects Grid */}
+      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {displayedProjects.map((p, i) => (
+          <motion.div
+            key={i}
+            variants={fadeIn(directions[i % directions.length], i * 0.3)}
+            initial="hidden"
+            animate="show"
+            className="bg-gray-800 rounded-2xl shadow-lg shadow-purple-500/20 overflow-hidden"
+          >
+            <img
+              src={p.img}
+              alt={p.title}
+              className="w-full h-56 md:h-80 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="text-lg md:text-xl font-bold">{p.title}</h3>
+              <p className="text-gray-400 text-sm mt-2">{p.desc}</p>
+              <div className="flex gap-4 mt-4">
+                <a
+                  className="text-purple-400 hover:underline cursor-pointer"
+                  href={p.demo}
+                  target="_blank"
+                >
+                  Live Demo
+                </a>
+                <button
+                  onClick={() => setSelectedProject(p)}
+                  className="text-gray-300 hover:text-white cursor-pointer"
+                >
+                  Details →
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Modal for Certificate */}
-      {selectedCert && (
+      {/* ✅ Modal */}
+      {selectedProject && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="relative bg-gray-900 p-4 rounded-xl max-w-3xl w-full">
+          <div className="relative bg-gray-900 p-6 rounded-xl max-w-4xl w-full shadow-xl shadow-purple-500/30 overflow-y-auto max-h-[90vh]">
             <button
-              onClick={() => setSelectedCert(null)}
-              className="absolute top-2 right-2 bg-red-500 px-3 py-1 rounded-md text-white"
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-2 right-2 bg-red-500 px-3 py-1 rounded-md text-white cursor-pointer"
             >
               ✕
             </button>
-            <img
-              src={selectedCert}
-              alt="Certificate Full"
-              className="w-full max-h-[80vh] object-contain rounded-lg"
-            />
+
+            {/* Video or Image */}
+            {selectedProject.video ? (
+              <video
+                src={selectedProject.video}
+                controls
+                autoPlay
+                muted
+                loop
+                className="w-full h-72 md:h-96 object-cover rounded-lg"
+              />
+            ) : (
+              <img
+                src={selectedProject.img}
+                alt={selectedProject.title}
+                className="w-full h-64 object-cover rounded-lg"
+              />
+            )}
+
+            {/* Details */}
+            <h2 className="mt-4 text-2xl font-bold text-purple-400">
+              {selectedProject.title}
+            </h2>
+            <p className="mt-2 text-gray-300">{selectedProject.details}</p>
+
+            {/* Tech Stack */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {selectedProject.tech.map((t, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-purple-700/40 rounded-lg text-sm"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Live Demo */}
+            <div className="mt-6">
+              <a
+                href={selectedProject.demo}
+                target="_blank"
+                className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
+              >
+                🔗 Visit Live Demo
+              </a>
+            </div>
           </div>
         </div>
       )}

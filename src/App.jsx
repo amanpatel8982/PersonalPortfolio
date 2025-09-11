@@ -5,6 +5,7 @@ import About from './pages/About';
 import Skill from './pages/Skill';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import Certificate from './pages/Certificate';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <Route path="/skill" element={<Skill />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/certificate" element={<Certificate />} />
+
        </Routes>
     </BrowserRouter>  
     </>
