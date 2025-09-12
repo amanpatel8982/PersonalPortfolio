@@ -30,37 +30,32 @@ export default function Portfolio() {
 
   // ✅ Frontend Projects
   const frontendProjects = [
-    {
-      title: "Event Planner",
-      desc: "Real-time event scheduling and management with AI integration.",
-      img: "/project1.jpg",
-      details:
-        "This Event Planner app allows users to create, update, and manage events in real time. It uses AI for smart scheduling, conflict detection, and optimized reminders. Built using React, Node.js, and MongoDB.",
-      tech: ["React", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
-      demo: "#",
-      video: "/event.mp4",
-    },
-    {
-      title: "Chatting App",
-      desc: "A real-time chat application with private rooms.",
-      img: "/project2.jpg",
-      details:
-        "This Chatting App enables instant messaging with real-time updates using Socket.IO. Features include group chats, private rooms, and media sharing. Backend is powered by Express.js with JWT authentication.",
-      tech: ["React", "Express.js", "Socket.IO", "JWT"],
-      demo: "#",
-      video: "/chat.mp4",
-    },
-    {
-      title: "MyHealthFile",
-      desc: "Digital health records management platform.",
-      img: "/project3.jpg",
-      details:
-        "MyHealthFile is a secure medical platform where patients can store, manage, and share their health records with doctors. Includes role-based dashboards, appointment scheduling, and report uploads.",
-      tech: ["React", "Django", "SQLite", "TailwindCSS"],
-      demo: "#",
-      video: "/myhealth.gif",
-    },
-  ];
+  {
+    title: "Currency Converter",
+    desc: "Real-time currency conversion with live exchange rates.",
+    img: "/CURR.jpg",   // ✅ public/CURR.jpg
+    details:
+      "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
+    tech: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    title: "Furni",
+    desc: "A real-time furniture marketplace.",
+    img: "/furni.jpg",   // ✅ public/furni.jpg
+    details:
+      "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
+    tech: ["HTML", "CSS"],
+  },
+  {
+    title: "ROCK PAPER SCISSORS",
+    desc: "A fun and interactive rock-paper-scissors game.",
+    img: "/rock.jpg",   // ✅ public/rock.jpg
+    details:
+      "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
+    tech: ["HTML", "CSS", "JavaScript"],
+  },
+];
+
 
   // ✅ Backend Projects
   const backendProjects = [
