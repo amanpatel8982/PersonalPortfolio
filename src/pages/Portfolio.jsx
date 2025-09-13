@@ -28,12 +28,12 @@ export default function Portfolio() {
 
   const directions = ["left", "right", "up", "down"];
 
-  // ✅ Frontend Projects
+
   const frontendProjects = [
   {
     title: "Currency Converter",
     desc: "Real-time currency conversion with live exchange rates.",
-    img: "/CURR.jpg",   // ✅ public/CURR.jpg
+    img: "/CURR.png",   
     details:
       "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
     tech: ["HTML", "CSS", "JavaScript"],
@@ -41,7 +41,7 @@ export default function Portfolio() {
   {
     title: "Furni",
     desc: "A real-time furniture marketplace.",
-    img: "/furni.jpg",   // ✅ public/furni.jpg
+    img: "/furni.png",   
     details:
       "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
     tech: ["HTML", "CSS"],
@@ -49,7 +49,7 @@ export default function Portfolio() {
   {
     title: "ROCK PAPER SCISSORS",
     desc: "A fun and interactive rock-paper-scissors game.",
-    img: "/rock.jpg",   // ✅ public/rock.jpg
+    img: "/rock.png",  
     details:
       "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
     tech: ["HTML", "CSS", "JavaScript"],
@@ -57,7 +57,7 @@ export default function Portfolio() {
 ];
 
 
-  // ✅ Backend Projects
+ 
   const backendProjects = [
      {
       title: "Event Planner",
