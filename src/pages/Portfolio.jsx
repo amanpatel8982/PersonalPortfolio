@@ -33,29 +33,31 @@ export default function Portfolio() {
   {
     title: "Currency Converter",
     desc: "Real-time currency conversion with live exchange rates.",
-    img: "/CURR.png",   
+    img: "/CURR.png",
     details:
       "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
     tech: ["HTML", "CSS", "JavaScript"],
+   demo: "https://amanpatel8982.github.io/CurrencyConvertor/", // 👉 Apna link daal
   },
   {
     title: "Furni",
     desc: "A real-time furniture marketplace.",
-    img: "/furni.png",   
+    img: "/furni.png",
     details:
       "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
     tech: ["HTML", "CSS"],
+    demo: "https://github.com/amanpatel8982/FURNI.git", // 👉 Apna link daal
   },
   {
     title: "ROCK PAPER SCISSORS",
     desc: "A fun and interactive rock-paper-scissors game.",
-    img: "/rock.png",  
+    img: "/rock.png",
     details:
       "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
     tech: ["HTML", "CSS", "JavaScript"],
+    demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/", // 👉 Apna link daal
   },
 ];
-
 
  
   const backendProjects = [

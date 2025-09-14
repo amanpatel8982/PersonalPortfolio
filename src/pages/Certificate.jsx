@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Certificate() {
   const [selectedCert, setSelectedCert] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(3); // 👈 Kitne certs dikhane hai initially
 
   const fadeIn = (direction = "up", delay = 0) => ({
     hidden: {
@@ -20,6 +21,17 @@ export default function Certificate() {
   });
 
   const directions = ["left", "right", "up", "down"];
+
+  // 👇 Sare certificates list me daal
+  const certificates = [
+    "/cert1.png",
+    "/cert2.png",
+    "/cert3.png",
+    "/cert4.png",
+    "/cert5.png",
+    "/cert6.png",
+    "/cert7.png",
+  ];
 
   return (
     <section className="py-20 px-4 md:px-12 bg-gradient-to-b from-black to-gray-900 text-white">
@@ -42,8 +54,9 @@ export default function Certificate() {
         learning journey.
       </motion.p>
 
+      {/* Grid */}
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {["/cert1.png", "/cert2.png", "/cert3.png"].map((c, i) => (
+        {certificates.slice(0, visibleCount).map((c, i) => (
           <motion.div
             key={i}
             variants={fadeIn(directions[i % directions.length], i * 0.3)}
@@ -60,6 +73,18 @@ export default function Certificate() {
           </motion.div>
         ))}
       </div>
+
+      {/* Load More Button */}
+      {visibleCount < certificates.length && (
+        <div className="text-center mt-8">
+          <button
+            onClick={() => setVisibleCount(visibleCount + 3)} // 👈 har click pe 3 aur dikhao
+            className="px-6 py-2 bg-purple-600 rounded-lg text-white font-semibold hover:bg-purple-700 transition"
+          >
+            Load More ↓
+          </button>
+        </div>
+      )}
 
       {/* Certificate Modal */}
       {selectedCert && (
