@@ -33,10 +33,10 @@ export default function About() {
         >
           Hello, I'm{" "}
           <span className="font-semibold text-white">Aman Patel</span>, passionate
-          about building smart and scalable web & mobile applications. I've completed
-          a full-stack development course and constantly explore new technologies to
-          refine my skills. Focused on continuous learning, I aim to transition into
-          the IT industry by 2027 and eventually move towards AI and data science.
+            about building practical and efficient web & mobile applications. I have completed
+            a full-stack development course and am always learning new technologies to improve my skills.
+            My goal is to start my career in the IT industry by 2027, focusing on real-world projects and teamwork.
+            I am committed to continuous growth and plan to move towards AI and data science as I gain experience.
         </motion.p>
 
         {/* Buttons */}

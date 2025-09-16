@@ -154,7 +154,7 @@ export default function Home() {
                 {/* Back Side (Your Photo) */}
                 <div className="flip-card-back">
                   <img
-                    src="Aman.jpg"
+                    src="Aman2.jpg"
                     alt="me"
                     className="w-full h-full object-cover rounded-2xl"
                   />
