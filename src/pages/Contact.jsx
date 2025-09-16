@@ -37,11 +37,11 @@ export default function Contact() {
 
           <div className="space-y-4">
             <div className="flex items-center gap-3 bg-gray-800 p-3 rounded-lg hover:shadow-md hover:shadow-purple-600/30 transition">
-              <Phone className="text-green-400" /> <span>+91 8540839262</span>
+              <Phone className="text-green-400" /> <span>+91 7724818982</span>
             </div>
             <div className="flex items-center gap-3 bg-gray-800 p-3 rounded-lg hover:shadow-md hover:shadow-purple-600/30 transition">
               <Mail className="text-blue-400" />{" "}
-              <span>ranjankumar459688@gmail.com</span>
+              <span>ap7463015@gmail.com</span>
             </div>
             <div className="flex items-center gap-3 bg-gray-800 p-3 rounded-lg hover:shadow-md hover:shadow-purple-600/30 transition">
               <Linkedin className="text-blue-500" /> <span>AmanPatel</span>
