@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("frontend");
-  const [selectedCert, setSelectedCert] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Animation variants
@@ -28,40 +27,38 @@ export default function Portfolio() {
 
   const directions = ["left", "right", "up", "down"];
 
-
   const frontendProjects = [
-  {
-    title: "Currency Converter",
-    desc: "Real-time currency conversion with live exchange rates.",
-    img: "/CURR.png",
-    details:
-      "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
-    tech: ["HTML", "CSS", "JavaScript"],
-   demo: "https://amanpatel8982.github.io/CurrencyConvertor/", // 👉 Apna link daal
-  },
-  {
-    title: "Furni",
-    desc: "A real-time furniture marketplace.",
-    img: "/furni.png",
-    details:
-      "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
-    tech: ["HTML", "CSS"],
-    demo: "https://github.com/amanpatel8982/FURNI.git", // 👉 Apna link daal
-  },
-  {
-    title: "ROCK PAPER SCISSORS",
-    desc: "A fun and interactive rock-paper-scissors game.",
-    img: "/rock.png",
-    details:
-      "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/", // 👉 Apna link daal
-  },
-];
+    {
+      title: "Currency Converter",
+      desc: "Real-time currency conversion with live exchange rates.",
+      img: "/CURR.png",
+      details:
+        "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/CurrencyConvertor/",
+    },
+    {
+      title: "Furni",
+      desc: "A real-time furniture marketplace.",
+      img: "/furni.png",
+      details:
+        "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
+      tech: ["HTML", "CSS"],
+      demo: "https://github.com/amanpatel8982/FURNI.git",
+    },
+    {
+      title: "ROCK PAPER SCISSORS",
+      desc: "A fun and interactive rock-paper-scissors game.",
+      img: "/rock.png",
+      details:
+        "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+  ];
 
- 
   const backendProjects = [
-     {
+    {
       title: "Event Planner",
       desc: "Real-time event scheduling and management with AI integration.",
       img: "/project1.jpg",
@@ -109,7 +106,8 @@ export default function Portfolio() {
       <motion.h2
         variants={fadeIn("up", 0.2)}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
         className="text-3xl md:text-5xl font-bold font-serif text-center mt-20 text-purple-400"
       >
         Portfolio Showcase
@@ -119,7 +117,8 @@ export default function Portfolio() {
       <motion.p
         variants={fadeIn("up", 0.4)}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
         className="text-center font-serif text-gray-400 mt-6 text-sm md:text-base"
       >
         Explore my journey through projects, certifications, and technical
@@ -131,7 +130,8 @@ export default function Portfolio() {
       <motion.div
         variants={fadeIn("up", 0.6)}
         initial="hidden"
-        animate="show"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
         className="flex flex-wrap justify-center gap-3 md:gap-6 mt-8 bg-gray-800 p-2 rounded-xl"
       >
         {tabs.map((tab) => (
@@ -156,7 +156,8 @@ export default function Portfolio() {
             key={i}
             variants={fadeIn(directions[i % directions.length], i * 0.3)}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: false, amount: 0.2 }}
             className="bg-gray-800 rounded-2xl shadow-lg shadow-purple-500/20 overflow-hidden"
           >
             <img
