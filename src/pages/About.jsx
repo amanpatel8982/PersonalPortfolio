@@ -17,8 +17,8 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0, y: -80 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
                      font-serif font-bold mb-6 sm:mb-12 text-purple-400"
         >
@@ -29,8 +29,8 @@ export default function About() {
         <motion.p
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
           className="text-sm sm:text-base md:text-lg font-serif 
                      text-gray-300 leading-relaxed mb-6 sm:mb-10"
         >
@@ -48,8 +48,8 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8 sm:mb-14"
         >
           {/* Download Resume */}
@@ -89,8 +89,8 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
           className="relative bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] 
                      p-5 sm:p-6 rounded-2xl shadow-lg hover:scale-105 
                      transition-transform duration-300"
@@ -101,7 +101,7 @@ export default function About() {
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            7.55 <span className="text-xs sm:text-[13px] relative top-0.5">cgpa</span>
+            7.55 <span className="text-xs sm:text-[13px]">cgpa</span>
           </motion.span>
           <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 
                           bg-gray-800 rounded-full mb-3 sm:mb-4 text-purple-400">
@@ -119,8 +119,8 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          viewport={{ once: true }}
           className="relative bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] 
                      p-5 sm:p-6 rounded-2xl shadow-lg hover:scale-105 
                      transition-transform duration-300"
@@ -131,7 +131,7 @@ export default function About() {
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            75.6 <span className="text-xs sm:text-[13px] relative top-0.5">per.</span>
+            75.6 <span className="text-xs sm:text-[13px]">per.</span>
           </motion.span>
           <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 
                           bg-gray-800 rounded-full mb-3 sm:mb-4 text-green-400">
@@ -149,8 +149,8 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          viewport={{ once: false }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          viewport={{ once: true }}
           className="relative bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] 
                      p-5 sm:p-6 rounded-2xl shadow-lg hover:scale-105 
                      transition-transform duration-300"
@@ -161,7 +161,7 @@ export default function About() {
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            81 <span className="text-xs sm:text-[13px] relative top-0.5">per.</span>
+            81 <span className="text-xs sm:text-[13px]">per.</span>
           </motion.span>
           <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 
                           bg-gray-800 rounded-full mb-3 sm:mb-4 text-blue-400">

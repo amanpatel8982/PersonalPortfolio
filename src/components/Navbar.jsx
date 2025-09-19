@@ -78,7 +78,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden fixed top-20 left-0 w-full bg-gradient-to-r from-gray-900 via-purple-900 to-black text-white shadow-lg flex flex-col items-center gap-6 py-8 z-40">
+        <div className="md:hidden fixed top-20 left-0 max-w-full bg-gradient-to-r from-gray-900 via-purple-900 to-black text-white shadow-lg flex flex-col items-center gap-6 py-8 z-40">
           <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 hover:text-indigo-500">
             <Home size={18} /> HOME
           </Link>
