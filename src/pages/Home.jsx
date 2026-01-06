@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react"; // ✅ Added
 import About from "./About";
@@ -7,8 +8,10 @@ import Skill from "./Skill";
 import Portfolio from "./Portfolio";
 import Contact from "./Contact";
 import Certificate from "./Certificate";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const cursorRef = useRef(null);
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export default function Home() {
               transition={{ duration: 4, repeat: Infinity }}
               className="mt-10 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
             >
-              <span className="text-gray-200">Full Stack </span>
+              <span className="text-gray-200">Full Stack</span>
               <span className="text-purple-400">Developer</span>
             </motion.h1>
 
@@ -101,6 +104,8 @@ export default function Home() {
                 href="#projects"
                 className="px-4 py-3 rounded-lg bg-gray-800 text-white 
              shadow-[0_0_20px_rgba(247,51,234,0.6)] hover:bg-purple-600 text-sm sm:text-base"
+
+               onClick={() => navigate("/portfolio")}
               >
                 Projects
               </motion.a>
@@ -144,7 +149,7 @@ export default function Home() {
                   Look me
                 </p>
                   <DotLottieReact
-                    className="w-full h-130 mt-20 ms-20"
+                    className="w-full h-130  ms-3"
                     src="https://lottie.host/e9a723c4-74bb-4751-bf98-c9111379a1ed/3XV0yDYupT.lottie"
                     loop
                     autoplay
