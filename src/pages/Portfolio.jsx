@@ -6,22 +6,17 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("frontend");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Animation variants
   const fadeIn = (direction = "up", delay = 0) => ({
     hidden: {
       opacity: 0,
-      x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
-      y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
+      x: direction === "left" ? -60 : direction === "right" ? 60 : 0,
+      y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
     },
     show: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: {
-        delay,
-        duration: 0.8,
-        ease: "easeOut",
-      },
+      transition: { delay, duration: 0.6, ease: "easeOut" },
     },
   });
 
@@ -33,116 +28,121 @@ export default function Portfolio() {
       desc: "Real-time currency conversion with live exchange rates.",
       img: "/CURR.png",
       details:
-        "This Currency Converter app allows users to convert amounts between different currencies in real time. It uses a third-party API to fetch live exchange rates and supports multiple currencies. Built using React, Node.js, and MongoDB.",
+        "This Currency Converter app allows users to convert amounts between different currencies in real time.",
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/CurrencyConvertor/",
     },
     {
       title: "Furni",
-      desc: "A real-time furniture marketplace.",
+      desc: "A furniture marketplace UI.",
       img: "/furni.png",
-      details:
-        "This Furniture Marketplace app allows users to browse and purchase furniture items. Built using HTML and CSS.",
+      details: "Furniture Marketplace built using HTML & CSS.",
       tech: ["HTML", "CSS"],
       demo: "https://github.com/amanpatel8982/FURNI.git",
     },
     {
-      title: "ROCK PAPER SCISSORS",
-      desc: "A fun and interactive rock-paper-scissors game.",
+      title: "Rock Paper Scissors",
+      desc: "Interactive game with JS logic.",
       img: "/rock.png",
-      details:
-        "This Rock Paper Scissors game allows users to play against the computer. Built using HTML, CSS, and JavaScript.",
+      details: "Classic Rock Paper Scissors game.",
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
     },
+   
   ];
 
   const backendProjects = [
     {
       title: "Event Planner",
-      desc: "Real-time event scheduling and management with AI integration.",
+      desc: "AI based event scheduling platform.",
       img: "/project1.jpg",
-      details:
-        "This Event Planner app allows users to create, update, and manage events in real time. It uses AI for smart scheduling, conflict detection, and optimized reminders. Built using React, Node.js, and MongoDB.",
-      tech: ["React", "TailwindCSS", "Node.js", "MongoDB", "Express.js"],
-      demo: "#",
+      details: "Event planner with smart scheduling.",
+      tech: ["React", "Node.js", "MySql","Express.js"],
+      demo: "https://event-planner-by-aman0.netlify.app/",
       video: "/event.mp4",
     },
     {
-      title: "Chatting App",
-      desc: "A real-time chat application with private rooms.",
+      title: "Chat App",
+      desc: "Real-time chat application.",
       img: "/project2.jpg",
-      details:
-        "This Chatting App enables instant messaging with real-time updates using Socket.IO. Features include group chats, private rooms, and media sharing. Backend is powered by Express.js with JWT authentication.",
-      tech: ["React", "Express.js", "Socket.IO", "JWT"],
+      details: "Socket.IO based chat app.",
+      tech: ["React", "Express", "JWT","Socket.IO"],
       demo: "#",
       video: "/chat.mp4",
     },
     {
       title: "MyHealthFile",
-      desc: "Digital health records management platform.",
+      desc: "Digital medical record system.",
       img: "/project3.jpg",
-      details:
-        "MyHealthFile is a secure medical platform where patients can store, manage, and share their health records with doctors. Includes role-based dashboards, appointment scheduling, and report uploads.",
-      tech: ["React", "Django", "SQLite", "TailwindCSS"],
-      demo: "#",
-      video: "/myhealth.gif",
+      details: "Healthcare platform with dashboards.",
+      tech: ["React", "Node.js", "MySql","Express.js"],
+      demo: "https://my-health-file-by-aman.netlify.app/",
+    },
+    {
+      title: "AI-Invoice",
+      desc: "Professional Invoices in Seconds",
+      img: "/project4.png",
+      details: "Generate ready-to-send invoices instantly.",
+      tech: ["React", "Node.js", "MySql","Express.js"],
+      demo: "https://ai-invoice-by-aman.netlify.app/",
     },
   ];
 
-  // ✅ Tabs
   const tabs = [
-    { id: "frontend", label: "Front-End", icon: <Code /> },
-    { id: "backend", label: "Back-End", icon: <Database /> },
+    { id: "frontend", label: "Front-End", icon: <Code size={18} /> },
+    { id: "backend", label: "Back-End", icon: <Database size={18} /> },
   ];
 
-  // ✅ Choose data based on active tab
   const displayedProjects =
     activeTab === "frontend" ? frontendProjects : backendProjects;
 
   return (
-    <section className="py-20 px-4 md:px-12 bg-gradient-to-b from-gray-900 to-black text-white">
+    <section className="pt-12 sm:pt-16 md:pt-20 pb-16 px-4 md:px-12 bg-gradient-to-b from-gray-900 to-black text-white overflow-hidden">
+      
       {/* Heading */}
       <motion.h2
-        variants={fadeIn("up", 0.2)}
+        variants={fadeIn("up", 0.1)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.2 }}
-        className="text-3xl md:text-5xl font-bold font-serif text-center mt-20 text-purple-400"
+        viewport={{ once: true }}
+        className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif 
+                   text-center text-purple-400"
       >
         Portfolio Showcase
       </motion.h2>
 
       {/* Subheading */}
       <motion.p
-        variants={fadeIn("up", 0.4)}
+        variants={fadeIn("up", 0.2)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.2 }}
-        className="text-center font-serif text-gray-400 mt-6 text-sm md:text-base"
+        viewport={{ once: true }}
+        className="text-center text-gray-400 text-xs sm:text-sm md:text-base 
+                   mt-4 max-w-2xl mx-auto"
       >
-        Explore my journey through projects, certifications, and technical
-        expertise. Each section <br className="hidden md:block" /> represents a
-        milestone in my continuous learning path.
+        Explore my journey through projects and real-world applications.
       </motion.p>
 
       {/* Tabs */}
       <motion.div
-        variants={fadeIn("up", 0.6)}
+        variants={fadeIn("up", 0.3)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.2 }}
-        className="flex flex-wrap justify-center gap-3 md:gap-6 mt-8 bg-gray-800 p-2 rounded-xl"
+        viewport={{ once: true }}
+        className="flex justify-center gap-2 sm:gap-4 mt-6 
+                   bg-gray-800 p-2 rounded-xl w-fit mx-auto"
       >
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 md:px-10 py-2 md:py-3 rounded-xl flex items-center gap-2 font-serif transition ${
-              activeTab === tab.id
-                ? "bg-purple-700 text-white"
-                : "bg-gray-800 hover:bg-gray-700"
-            }`}
+            className={`px-4 sm:px-6 py-2 rounded-lg flex items-center gap-2 
+              text-sm sm:text-base transition
+              ${
+                activeTab === tab.id
+                  ? "bg-purple-700 text-white"
+                  : "bg-gray-700 hover:bg-gray-600"
+              }`}
           >
             {tab.icon} {tab.label}
           </button>
@@ -150,35 +150,42 @@ export default function Portfolio() {
       </motion.div>
 
       {/* Projects Grid */}
-      <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayedProjects.map((p, i) => (
           <motion.div
             key={i}
-            variants={fadeIn(directions[i % directions.length], i * 0.3)}
+            variants={fadeIn(directions[i % 4], i * 0.1)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, amount: 0.2 }}
-            className="bg-gray-800 rounded-2xl shadow-lg shadow-purple-500/20 overflow-hidden"
+            viewport={{ once: true }}
+            className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
           >
             <img
               src={p.img}
               alt={p.title}
-              className="w-full h-56 md:h-80 object-cover"
+              className="w-full h-48 sm:h-56 md:h-64 object-cover"
             />
+
             <div className="p-4">
-              <h3 className="text-lg md:text-xl font-bold">{p.title}</h3>
-              <p className="text-gray-400 text-sm mt-2">{p.desc}</p>
-              <div className="flex gap-4 mt-4">
+              <h3 className="text-base sm:text-lg font-bold">
+                {p.title}
+              </h3>
+
+              <p className="text-gray-400 text-xs sm:text-sm mt-2">
+                {p.desc}
+              </p>
+
+              <div className="flex gap-4 mt-4 text-sm">
                 <a
-                  className="text-purple-400 hover:underline cursor-pointer"
                   href={p.demo}
                   target="_blank"
+                  className="text-purple-400 hover:underline"
                 >
                   Live Demo
                 </a>
                 <button
                   onClick={() => setSelectedProject(p)}
-                  className="text-gray-300 hover:text-white cursor-pointer"
+                  className="text-gray-300 hover:text-white"
                 >
                   Details →
                 </button>
@@ -188,62 +195,50 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* ✅ Modal */}
+      {/* Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="relative bg-gray-900 p-6 rounded-xl max-w-4xl w-full shadow-xl shadow-purple-500/30 overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="bg-gray-900 rounded-xl p-4 max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-2 right-2 bg-red-500 px-3 py-1 rounded-md text-white cursor-pointer"
+              className="absolute top-2 right-2 bg-red-500 px-3 py-1 rounded text-white"
             >
               ✕
             </button>
 
-            {/* Video or Image */}
             {selectedProject.video ? (
               <video
                 src={selectedProject.video}
                 controls
                 autoPlay
                 muted
-                loop
-                className="w-full h-72 md:h-96 object-cover rounded-lg"
+                className="w-full h-56 sm:h-72 object-cover rounded-lg"
               />
             ) : (
               <img
                 src={selectedProject.img}
                 alt={selectedProject.title}
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full h-56 sm:h-72 object-cover rounded-lg"
               />
             )}
 
-            {/* Details */}
-            <h2 className="mt-4 text-2xl font-bold text-purple-400">
+            <h2 className="mt-4 text-xl font-bold text-purple-400">
               {selectedProject.title}
             </h2>
-            <p className="mt-2 text-gray-300">{selectedProject.details}</p>
 
-            {/* Tech Stack */}
-            <div className="mt-4 flex flex-wrap gap-2">
+            <p className="mt-2 text-gray-300 text-sm">
+              {selectedProject.details}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mt-4">
               {selectedProject.tech.map((t, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 bg-purple-700/40 rounded-lg text-sm"
+                  className="px-3 py-1 bg-purple-700/40 rounded text-xs"
                 >
                   {t}
                 </span>
               ))}
-            </div>
-
-            {/* Live Demo */}
-            <div className="mt-6">
-              <a
-                href={selectedProject.demo}
-                target="_blank"
-                className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
-              >
-                🔗 Visit Live Demo
-              </a>
             </div>
           </div>
         </div>

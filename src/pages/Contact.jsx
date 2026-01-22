@@ -17,7 +17,7 @@ export default function Contact() {
   });
 
   return (
-    <section className="min-h-screen py-20 px-6 md:px-12 bg-gradient-to-b from-black to-gray-900 text-white">
+    <section className="min-h-screen py-20 px-6 md:px-12 bg-gradient-to-b from-black to-gray-900 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         {/* Left Section - Contact Info */}
         <motion.div

@@ -76,6 +76,7 @@ export default function Home() {
 
             <motion.p
               animate={{ opacity: [0.5, 1, 0.5] }}
+              
               transition={{ duration: 5, repeat: Infinity }}
               className="mt-6 font-serif text-sm sm:text-base md:text-lg text-gray-300"
             >
@@ -122,9 +123,9 @@ export default function Home() {
             {/* Social Links */}
             <div className="flex justify-center md:justify-start gap-6 mt-10">
               {[
-                { icon: <FaGithub size={20} />, link: "https://github.com/" },
-                { icon: <FaLinkedin size={20} />, link: "https://linkedin.com/" },
-                { icon: <FaInstagram size={20} />, link: "https://instagram.com/" },
+                { icon: <FaGithub size={20} />, link: "https://github.com/amanpatel8982" },
+                { icon: <FaLinkedin size={20} />, link: "https://www.linkedin.com/in/aman-patel-9bbb5427b/" },
+                { icon: <FaInstagram size={20} />, link: "https://www.instagram.com/amanpatel772481/?next=%2F" },
               ].map((item, i) => (
                 <motion.a
                   key={i}
@@ -149,7 +150,7 @@ export default function Home() {
                   Look me
                 </p>
                   <DotLottieReact
-                    className="w-full h-130  ms-3"
+                    className="w-full h-120  ms-3"
                     src="https://lottie.host/e9a723c4-74bb-4751-bf98-c9111379a1ed/3XV0yDYupT.lottie"
                     loop
                     autoplay

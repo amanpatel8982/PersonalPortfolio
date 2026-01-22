@@ -39,12 +39,12 @@ export default function Certificate() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
-      className="py-20 px-4 md:px-12 bg-gradient-to-b from-black to-gray-900 text-white"
+      className="py-20 px-4 md:px-12 bg-gradient-to-b from-black to-gray-900 text-white overflow-hidden"
     >
       {/* Heading */}
       <motion.h2
         variants={fadeIn("up", 0.2)}
-        className="text-3xl md:text-5xl font-bold font-serif text-center mt-20 text-purple-400 flex justify-center items-center gap-2"
+        className="text-3xl md:text-5xl font-bold font-serif text-center mt-8 text-purple-400 flex justify-center items-center gap-2"
       >
         <Award className="w-8 h-8" /> Certificates & Achievements
       </motion.h2>
