@@ -1,26 +1,18 @@
 import { useState } from "react";
-import { Code, Database } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  Code,
+  Database,
+  Sparkles,
+  ExternalLink,
+  Eye,
+  X,
+  PlayCircle,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("frontend");
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const fadeIn = (direction = "up", delay = 0) => ({
-    hidden: {
-      opacity: 0,
-      x: direction === "left" ? -60 : direction === "right" ? 60 : 0,
-      y: direction === "up" ? 60 : direction === "down" ? -60 : 0,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: { delay, duration: 0.6, ease: "easeOut" },
-    },
-  });
-
-  const directions = ["left", "right", "up", "down"];
 
   const frontendProjects = [
     {
@@ -28,27 +20,28 @@ export default function Portfolio() {
       desc: "Real-time currency conversion with live exchange rates.",
       img: "/CURR.png",
       details:
-        "This Currency Converter app allows users to convert amounts between different currencies in real time.",
+        "This Currency Converter app allows users to convert amounts between different currencies in real time with a clean and simple interface.",
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/CurrencyConvertor/",
     },
     {
       title: "Furni",
-      desc: "A furniture marketplace UI.",
+      desc: "A furniture marketplace UI with clean layout.",
       img: "/furni.png",
-      details: "Furniture Marketplace built using HTML & CSS.",
+      details:
+        "Furniture Marketplace UI built using HTML and CSS. It focuses on clean product presentation and responsive layout.",
       tech: ["HTML", "CSS"],
       demo: "https://github.com/amanpatel8982/FURNI.git",
     },
     {
       title: "Rock Paper Scissors",
-      desc: "Interactive game with JS logic.",
+      desc: "Interactive browser game with JavaScript logic.",
       img: "/rock.png",
-      details: "Classic Rock Paper Scissors game.",
+      details:
+        "Classic Rock Paper Scissors game with interactive UI, score logic and smooth browser-based gameplay.",
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
     },
-   
   ];
 
   const backendProjects = [
@@ -56,193 +49,320 @@ export default function Portfolio() {
       title: "Event Planner",
       desc: "AI based event scheduling platform.",
       img: "/project1.jpg",
-      details: "Event planner with smart scheduling.",
-      tech: ["React", "Node.js", "MySql","Express.js"],
+      details:
+        "Event Planner is a smart scheduling platform where users can manage events, plan schedules and handle event-related workflows.",
+      tech: ["React", "Node.js", "MySQL", "Express.js"],
       demo: "https://event-planner-by-aman0.netlify.app/",
       video: "/event.mp4",
     },
     {
       title: "Chat App",
-      desc: "Real-time chat application.",
+      desc: "Real-time chat application with Socket.IO.",
       img: "/project2.jpg",
-      details: "Socket.IO based chat app.",
-      tech: ["React", "Express", "JWT","Socket.IO"],
+      details:
+        "Real-time chat application using Socket.IO, JWT authentication and Express backend for smooth live communication.",
+      tech: ["React", "Express", "JWT", "Socket.IO"],
       demo: "#",
       video: "/chat.mp4",
     },
     {
       title: "MyHealthFile",
-      desc: "Digital medical record system.",
+      desc: "Digital medical record management system.",
       img: "/project3.jpg",
-      details: "Healthcare platform with dashboards.",
-      tech: ["React", "Node.js", "MySql","Express.js"],
+      details:
+        "Healthcare platform for managing medical records, patient information and health-related data through modern dashboards.",
+      tech: ["React", "Node.js", "MySQL", "Express.js"],
       demo: "https://my-health-file-by-aman.netlify.app/",
     },
     {
       title: "AI-Invoice",
-      desc: "Professional Invoices in Seconds",
+      desc: "Generate professional invoices in seconds.",
       img: "/project4.png",
-      details: "Generate ready-to-send invoices instantly.",
-      tech: ["React", "Node.js", "MySql","Express.js"],
+      details:
+        "AI-Invoice helps users generate ready-to-send invoices instantly with a professional layout and fast workflow.",
+      tech: ["React", "Node.js", "MySQL", "Express.js"],
       demo: "https://ai-invoice-by-aman.netlify.app/",
     },
   ];
 
   const tabs = [
-    { id: "frontend", label: "Front-End", icon: <Code size={18} /> },
-    { id: "backend", label: "Back-End", icon: <Database size={18} /> },
+    { id: "frontend", label: "Front-End", icon: Code },
+    { id: "backend", label: "Back-End", icon: Database },
   ];
 
   const displayedProjects =
     activeTab === "frontend" ? frontendProjects : backendProjects;
 
   return (
-    <section className="pt-12 sm:pt-16 md:pt-20 pb-16 px-4 md:px-12 bg-gradient-to-b from-gray-900 to-black text-white overflow-hidden">
-      
-      {/* Heading */}
-      <motion.h2
-        variants={fadeIn("up", 0.1)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif 
-                   text-center text-purple-400"
-      >
-        Portfolio Showcase
-      </motion.h2>
-
-      {/* Subheading */}
-      <motion.p
-        variants={fadeIn("up", 0.2)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="text-center text-gray-400 text-xs sm:text-sm md:text-base 
-                   mt-4 max-w-2xl mx-auto"
-      >
-        Explore my journey through projects and real-world applications.
-      </motion.p>
-
-      {/* Tabs */}
+    <section
+      id="portfolio"
+      className="relative min-h-screen overflow-hidden bg-transparent px-4 py-24 text-white sm:px-6 lg:px-10"
+    >
       <motion.div
-        variants={fadeIn("up", 0.3)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="flex justify-center gap-2 sm:gap-4 mt-6 
-                   bg-gray-800 p-2 rounded-xl w-fit mx-auto"
-      >
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-4 sm:px-6 py-2 rounded-lg flex items-center gap-2 
-              text-sm sm:text-base transition
-              ${
-                activeTab === tab.id
-                  ? "bg-purple-700 text-white"
-                  : "bg-gray-700 hover:bg-gray-600"
-              }`}
-          >
-            {tab.icon} {tab.label}
-          </button>
-        ))}
-      </motion.div>
+        animate={{ x: [0, 90, 0], y: [0, -40, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-0 top-24 h-64 w-64 rounded-full bg-fuchsia-600/20 blur-3xl"
+      />
 
-      {/* Projects Grid */}
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayedProjects.map((p, i) => (
-          <motion.div
-            key={i}
-            variants={fadeIn(directions[i % 4], i * 0.1)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg"
-          >
-            <img
-              src={p.img}
-              alt={p.title}
-              className="w-full h-48 sm:h-56 md:h-64 object-cover"
-            />
+      <motion.div
+        animate={{ x: [0, -90, 0], y: [0, 55, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-20 right-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl"
+      />
 
-            <div className="p-4">
-              <h3 className="text-base sm:text-lg font-bold">
-                {p.title}
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: -45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <p className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/10 px-5 py-2 text-xs font-semibold text-cyan-200 shadow-[0_0_30px_rgba(34,211,238,0.18)] backdrop-blur-xl sm:text-sm">
+            <Sparkles size={16} />
+            My Work Showcase
+          </p>
+
+          <h2 className="font-serif text-4xl font-black sm:text-5xl md:text-6xl">
+            Portfolio{" "}
+            <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(168,85,247,0.5)]">
+              Showcase
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
+            Explore my frontend and full-stack projects built with modern UI,
+            responsive design, backend logic and real-world problem solving.
+          </p>
+        </motion.div>
+
+        {/* Stats */}
+        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
+          {[
+            { label: "Frontend", value: frontendProjects.length },
+            { label: "Full Stack", value: backendProjects.length },
+            { label: "Total Projects", value: frontendProjects.length + backendProjects.length },
+            { label: "Tech Stack", value: "10+" },
+          ].map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="rounded-2xl border border-white/10 bg-white/10 p-4 text-center shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+            >
+              <h3 className="text-2xl font-black text-cyan-300 sm:text-3xl">
+                {stat.value}
               </h3>
-
-              <p className="text-gray-400 text-xs sm:text-sm mt-2">
-                {p.desc}
+              <p className="mt-1 text-xs font-semibold text-slate-400 sm:text-sm">
+                {stat.label}
               </p>
+            </motion.div>
+          ))}
+        </div>
 
-              <div className="flex gap-4 mt-4 text-sm">
-                <a
-                  href={p.demo}
-                  target="_blank"
-                  className="text-purple-400 hover:underline"
-                >
-                  Live Demo
-                </a>
-                <button
-                  onClick={() => setSelectedProject(p)}
-                  className="text-gray-300 hover:text-white"
-                >
-                  Details →
-                </button>
-              </div>
-            </div>
+        {/* Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mx-auto mt-10 flex w-full max-w-md rounded-2xl border border-white/10 bg-white/10 p-2 backdrop-blur-xl"
+        >
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all sm:text-base ${
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 text-white shadow-[0_0_25px_rgba(34,211,238,0.25)]"
+                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Icon size={18} />
+                {tab.label}
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Projects Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 35 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -25 }}
+            transition={{ duration: 0.35 }}
+            className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-3"
+          >
+            {displayedProjects.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px] shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-[1.65rem] border border-white/10 bg-slate-950/90 backdrop-blur-2xl">
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+
+                  {/* Image */}
+                  <div className="relative h-56 overflow-hidden sm:h-60">
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+
+                    {project.video && (
+                      <span className="absolute right-4 top-4 flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-3 py-1 text-xs font-bold text-cyan-200 backdrop-blur-xl">
+                        <PlayCircle size={14} />
+                        Video
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-1 flex-col p-5">
+                    <h3 className="text-xl font-black text-white">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-3 min-h-[48px] text-sm leading-6 text-slate-400">
+                      {project.desc}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${
+                          project.demo === "#"
+                            ? "pointer-events-none bg-white/5 text-slate-500"
+                            : "bg-gradient-to-r from-fuchsia-500 to-cyan-400 text-white hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]"
+                        }`}
+                      >
+                        <ExternalLink size={16} />
+                        Live Demo
+                      </a>
+
+                      <button
+                        onClick={() => setSelectedProject(project)}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm font-bold text-white transition hover:border-cyan-300/40 hover:text-cyan-200"
+                      >
+                        <Eye size={16} />
+                        Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+        </AnimatePresence>
       </div>
 
       {/* Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 rounded-xl p-4 max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-2 right-2 bg-red-500 px-3 py-1 rounded text-white"
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 40, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 40, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[2rem] border border-white/10 bg-slate-950 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:p-6"
             >
-              ✕
-            </button>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute right-4 top-4 z-20 rounded-full bg-red-500 p-2 text-white shadow-lg transition hover:bg-red-600"
+              >
+                <X size={20} />
+              </button>
 
-            {selectedProject.video ? (
-              <video
-                src={selectedProject.video}
-                controls
-                autoPlay
-                muted
-                className="w-full h-56 sm:h-72 object-cover rounded-lg"
-              />
-            ) : (
-              <img
-                src={selectedProject.img}
-                alt={selectedProject.title}
-                className="w-full h-56 sm:h-72 object-cover rounded-lg"
-              />
-            )}
+              {selectedProject.video ? (
+                <video
+                  src={selectedProject.video}
+                  controls
+                  autoPlay
+                  muted
+                  className="h-60 w-full rounded-2xl object-cover sm:h-80"
+                />
+              ) : (
+                <img
+                  src={selectedProject.img}
+                  alt={selectedProject.title}
+                  className="h-60 w-full rounded-2xl object-cover sm:h-80"
+                />
+              )}
 
-            <h2 className="mt-4 text-xl font-bold text-purple-400">
-              {selectedProject.title}
-            </h2>
+              <div className="mt-6">
+                <h2 className="text-2xl font-black text-cyan-300 sm:text-3xl">
+                  {selectedProject.title}
+                </h2>
 
-            <p className="mt-2 text-gray-300 text-sm">
-              {selectedProject.details}
-            </p>
+                <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">
+                  {selectedProject.details}
+                </p>
 
-            <div className="flex flex-wrap gap-2 mt-4">
-              {selectedProject.tech.map((t, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 bg-purple-700/40 rounded text-xs"
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {selectedProject.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-fuchsia-400/20 bg-fuchsia-400/10 px-4 py-2 text-xs font-bold text-fuchsia-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={selectedProject.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold transition ${
+                    selectedProject.demo === "#"
+                      ? "pointer-events-none bg-white/5 text-slate-500"
+                      : "bg-gradient-to-r from-fuchsia-500 to-cyan-400 text-white"
+                  }`}
                 >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+                  <ExternalLink size={18} />
+                  Open Project
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
