@@ -96,7 +96,7 @@ export default function Portfolio() {
       img: "/project1.jpg",
       details:
         "Event Planner is a smart scheduling platform where users can manage events, plan schedules and handle event-related workflows.",
-      tech: ["React", "Node.js", "MySQL", "Express.js"],
+      tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://event-planner-by-aman0.netlify.app/",
       video: "/event.mp4",
     },
@@ -116,7 +116,7 @@ export default function Portfolio() {
       img: "/project3.jpg",
       details:
         "Healthcare platform for managing medical records, patient information and health-related data through modern dashboards.",
-      tech: ["React", "Node.js", "MySQL", "Express.js"],
+      tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://my-health-file-by-aman.netlify.app/",
     },
     {
@@ -125,7 +125,7 @@ export default function Portfolio() {
       img: "/project4.png",
       details:
         "AI-Invoice helps users generate ready-to-send invoices instantly with a professional layout and fast workflow.",
-      tech: ["React", "Node.js", "MySQL", "Express.js"],
+      tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://ai-invoice-by-aman.netlify.app/",
     },
      {
