@@ -8,6 +8,7 @@ import Portfolio from "./Portfolio";
 import Contact from "./Contact";
 import Certificate from "./Certificate";
 import { useNavigate } from "react-router-dom";
+import Experience from "./Experience";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -203,6 +204,7 @@ export default function Home() {
         </div>
 
         <About />
+        <Experience />
         <Skill />
         <Portfolio />
         <Certificate />
