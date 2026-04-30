@@ -7,13 +7,17 @@ export default function Certificate() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   const certificates = [
-    { img: "/cert1.png", title: "Certificate 01" },
+    { img: "/cert66.jpeg", title: "Certificate 01" },
     { img: "/cert2.png", title: "Certificate 02" },
-    { img: "/cert3.png", title: "Certificate 03" },
+    { img: "/cert1.png", title: "Certificate 03" },
     { img: "/cert4.png", title: "Certificate 04" },
-    { img: "/cert5.png", title: "Certificate 05" },
-    { img: "/cert6.png", title: "Certificate 06" },
-    { img: "/cert7.png", title: "Certificate 07" },
+    { img: "/cert11.jpeg", title: "Certificate 05" },
+    { img: "/cert22.jpeg", title: "Certificate 06" },
+    { img: "/cert33.jpeg", title: "Certificate 07" },
+    { img: "/cert44.jpeg", title: "Certificate 08" },
+    { img: "/cert55.jpeg", title: "Certificate 09" },
+     { img: "/cert3.png", title: "Certificate 10" },
+   
   ];
 
   return (
