@@ -35,10 +35,55 @@ export default function Portfolio() {
     },
     {
       title: "Rock Paper Scissors",
-      desc: "Interactive browser game with JavaScript logic.",
+      desc: "Interactive browser game with JavaScript logic. ",
       img: "/rock.png",
       details:
         "Classic Rock Paper Scissors game with interactive UI, score logic and smooth browser-based gameplay.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+    {
+      title: "Job finder",
+      desc: "A job search platform with modern UI and responsive design.",
+      img: "/front1.png",
+      details:
+        "Job finder app to help users search and apply for jobs efficiently.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+    {
+      title: "Food Mart",
+      desc: "A food delivery website with vibrant design and user-friendly interface.",
+      img: "/front2.png",
+      details:
+        "Food Mart is a modern food delivery platform with a vibrant design and user-friendly interface.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+    {
+      title: "Calculator",
+      desc: "A functional calculator with a sleek design and smooth user experience.",
+      img: "/front3.png",
+      details:
+        "A modern calculator with a sleek design and smooth user experience.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+    {
+      title: "OTP Generator",
+      desc: "A secure one-time password generator for authentication purposes.",
+      img: "/front4.png",
+      details:
+        "A secure OTP generator for authentication purposes with a clean and simple interface.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+    },
+    {
+      title: "TO-DO-LIST",
+      desc: "A simple to-do list application with task management features.",
+      img: "/front5.png",
+      details:
+        "A clean and intuitive to-do list application for managing tasks and improving productivity.",
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
     },
@@ -82,6 +127,15 @@ export default function Portfolio() {
         "AI-Invoice helps users generate ready-to-send invoices instantly with a professional layout and fast workflow.",
       tech: ["React", "Node.js", "MySQL", "Express.js"],
       demo: "https://ai-invoice-by-aman.netlify.app/",
+    },
+     {
+      title: "Health Nexus",
+      desc: "AI-powered fitness and health tracking platform with personalized insights and recommendations.",
+      img: "/project5.png",
+      details:
+        "Health Nexus provides personalized fitness and health tracking with AI-driven insights and recommendations.",
+      tech: ["React", "Node.js", "MongoDB", "Express.js"],
+      demo: "https://vermillion-griffin-998a4f.netlify.app/",
     },
   ];
 
