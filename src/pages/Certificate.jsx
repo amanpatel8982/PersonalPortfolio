@@ -16,7 +16,8 @@ export default function Certificate() {
     { img: "/cert33.jpeg", title: "Certificate 07" },
     { img: "/cert44.jpeg", title: "Certificate 08" },
     { img: "/cert55.jpeg", title: "Certificate 09" },
-     { img: "/cert3.png", title: "Certificate 10" },
+    { img: "/cert3.png", title: "Certificate 10" },
+    { img: "/cert20.pdf", title: "Certificate 11" },
    
   ];
 
