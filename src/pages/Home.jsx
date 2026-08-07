@@ -1,33 +1,50 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import About from "./About";
+import Experience from "./Experience";
 import Skill from "./Skill";
 import Portfolio from "./Portfolio";
-import Contact from "./Contact";
 import Certificate from "./Certificate";
-import { useNavigate } from "react-router-dom";
-import Experience from "./Experience";
+import Contact from "./Contact";
 
 export default function Home() {
   const navigate = useNavigate();
   const cursorRef = useRef(null);
 
+  const [isFlipped, setIsFlipped] = useState(false);
+
   useEffect(() => {
-    const moveCursor = (e) => {
+    const moveCursor = (event) => {
       if (cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX}px`;
-        cursorRef.current.style.top = `${e.clientY}px`;
+        cursorRef.current.style.left = `${event.clientX}px`;
+        cursorRef.current.style.top = `${event.clientY}px`;
       }
     };
 
     window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
+
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
   }, []);
 
+  const toggleCard = () => {
+    setIsFlipped((previousValue) => !previousValue);
+  };
+
+  const handleCardKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleCard();
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[#030712] text-white cursor-none">
+    <section className="relative overflow-hidden bg-[#030712] text-white md:cursor-none">
       {/* Cursor Glow */}
       <div
         ref={cursorRef}
@@ -36,29 +53,47 @@ export default function Home() {
 
       {/* Global Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.22),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.18),transparent_35%)]" />
-      <div className="absolute inset-0 opacity-25 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
+
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-25" />
 
       {/* Moving Stars */}
       <div className="stars-layer stars-small" />
       <div className="stars-layer stars-medium" />
       <div className="stars-layer stars-large" />
 
-      {/* Floating Glow Blobs */}
+      {/* Floating Glow Blob 1 */}
       <motion.div
-        animate={{ x: [0, 80, 0], y: [0, -60, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        animate={{
+          x: [0, 80, 0],
+          y: [0, -60, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="absolute left-10 top-28 h-56 w-56 rounded-full bg-purple-600/25 blur-3xl"
       />
 
+      {/* Floating Glow Blob 2 */}
       <motion.div
-        animate={{ x: [0, -70, 0], y: [0, 70, 0], scale: [1, 1.2, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        animate={{
+          x: [0, -70, 0],
+          y: [0, 70, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="absolute bottom-20 right-10 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl"
       />
 
       <div className="relative z-10">
         {/* Hero Section */}
-        <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-12 px-5 pt-28 pb-16 sm:px-6 lg:grid-cols-2 lg:px-10">
+        <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 items-center gap-12 px-5 pb-16 pt-28 sm:px-6 lg:grid-cols-2 lg:px-10">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -68,7 +103,10 @@ export default function Home() {
           >
             <motion.p
               animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+              }}
               className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/10 px-5 py-2 text-xs font-semibold text-cyan-200 shadow-[0_0_30px_rgba(34,211,238,0.18)] backdrop-blur-xl sm:text-sm"
             >
               🚀 Ready to Innovate
@@ -76,14 +114,20 @@ export default function Home() {
 
             <h1 className="mt-8 text-4xl font-black leading-tight sm:text-5xl md:text-6xl xl:text-7xl">
               <span className="block text-slate-100">Full Stack</span>
+
               <span className="block bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(168,85,247,0.5)]">
                 Developer
               </span>
             </h1>
 
             <motion.p
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 4, repeat: Infinity }}
+              animate={{
+                opacity: [0.7, 1, 0.7],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
               className="mt-5 font-serif text-lg text-slate-300 sm:text-xl md:text-2xl"
             >
               Computer Science Engg. - AIML
@@ -94,29 +138,43 @@ export default function Home() {
               and made to impress with premium UI and powerful backend logic.
             </p>
 
+            {/* Technology Pills */}
             <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
-              {["React", "JavaScript", "Node.js", "Express.js", "MongoDB"].map(
-                (tech, i) => (
-                  <motion.span
-                    key={tech}
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{
-                      duration: 2.2,
-                      repeat: Infinity,
-                      delay: i * 0.2,
-                    }}
-                    className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold text-slate-200 backdrop-blur-xl transition hover:border-cyan-300/50 hover:text-cyan-200 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] sm:text-sm"
-                  >
-                    {tech}
-                  </motion.span>
-                )
-              )}
+              {[
+                "React",
+                "JavaScript",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  animate={{
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    delay: index * 0.2,
+                  }}
+                  className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold text-slate-200 backdrop-blur-xl transition hover:border-cyan-300/50 hover:text-cyan-200 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] sm:text-sm"
+                >
+                  {tech}
+                </motion.span>
+              ))}
             </div>
 
+            {/* Buttons */}
             <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
               <motion.button
-                whileHover={{ scale: 1.06, y: -3 }}
-                whileTap={{ scale: 0.96 }}
+                type="button"
+                whileHover={{
+                  scale: 1.06,
+                  y: -3,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
                 onClick={() => navigate("/portfolio")}
                 className="rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px]"
               >
@@ -126,8 +184,14 @@ export default function Home() {
               </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.06, y: -3 }}
-                whileTap={{ scale: 0.96 }}
+                type="button"
+                whileHover={{
+                  scale: 1.06,
+                  y: -3,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
                 onClick={() => navigate("/contact")}
                 className="rounded-2xl border border-white/15 bg-white/10 px-7 py-3 font-bold text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:text-cyan-200"
               >
@@ -135,28 +199,39 @@ export default function Home() {
               </motion.button>
             </div>
 
+            {/* Social Links */}
             <div className="mt-10 flex justify-center gap-5 lg:justify-start">
               {[
                 {
+                  name: "GitHub",
                   icon: <FaGithub size={22} />,
                   link: "https://github.com/amanpatel8982",
                 },
                 {
+                  name: "LinkedIn",
                   icon: <FaLinkedin size={22} />,
                   link: "https://www.linkedin.com/in/aman-patel-9bbb5427b/",
                 },
                 {
+                  name: "Instagram",
                   icon: <FaInstagram size={22} />,
                   link: "https://www.instagram.com/amanpatel772481/?next=%2F",
                 },
-              ].map((item, i) => (
+              ].map((item, index) => (
                 <motion.a
-                  key={i}
+                  key={item.name}
                   href={item.link}
                   target="_blank"
                   rel="noreferrer"
-                  animate={{ y: [0, -7, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: i * 0.35 }}
+                  aria-label={item.name}
+                  animate={{
+                    y: [0, -7, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: index * 0.35,
+                  }}
                   className="rounded-full border border-white/10 bg-white/10 p-4 text-slate-200 backdrop-blur-xl transition hover:border-cyan-300/50 hover:text-cyan-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)]"
                 >
                   {item.icon}
@@ -167,42 +242,63 @@ export default function Home() {
 
           {/* Right Content */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+            initial={{
+              opacity: 0,
+              scale: 0.88,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1,
+            }}
             className="flex justify-center"
           >
-            <div className="relative w-full max-w-[520px]">
-              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-r from-fuchsia-500/30 via-violet-500/30 to-cyan-400/30 blur-2xl" />
+            <div
+              className={`flip-card relative h-[360px] w-full cursor-pointer select-none sm:h-[430px] md:h-[520px] ${
+                isFlipped ? "flipped" : ""
+              }`}
+              onClick={toggleCard}
+              onKeyDown={handleCardKeyDown}
+              role="button"
+              tabIndex={0}
+              aria-label={
+                isFlipped
+                  ? "Show animated developer card"
+                  : "Show Aman Patel image"
+              }
+              aria-pressed={isFlipped}
+            >
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front border border-white/10 bg-white/10 backdrop-blur-xl">
+                  <p className="absolute left-0 right-0 top-5 z-10 text-center font-serif text-sm text-cyan-200 sm:text-base">
+                    Hover or tap me ✨
+                  </p>
 
-              <div className="flip-card relative h-[360px] w-full sm:h-[430px] md:h-[520px]">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front border border-white/10 bg-white/10 backdrop-blur-xl">
-                    <p className="pt-5 text-center font-serif text-sm text-cyan-200 sm:text-base">
-                      Hover me ✨
-                    </p>
+                  <DotLottieReact
+                    className="h-full w-full"
+                    src="https://lottie.host/e9a723c4-74bb-4751-bf98-c9111379a1ed/3XV0yDYupT.lottie"
+                    loop
+                    autoplay
+                  />
+                </div>
 
-                    <DotLottieReact
-                      className="h-full w-full"
-                      src="https://lottie.host/e9a723c4-74bb-4751-bf98-c9111379a1ed/3XV0yDYupT.lottie"
-                      loop
-                      autoplay
-                    />
-                  </div>
-
-                  <div className="flip-card-back border border-white/10 bg-white/10 backdrop-blur-xl">
-                    <img
-                      src="Aman2.jpg"
-                      alt="Aman Patel"
-                      className="h-full w-full rounded-2xl object-cover"
-                    />
-                  </div>
+                {/* Back Side */}
+                <div className="flip-card-back border border-white/10 bg-white/10 backdrop-blur-xl">
+                  <img
+                    src="/Aman2.jpg"
+                    alt="Aman Patel"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
 
+        {/* Other Sections */}
         <About />
         <Experience />
         <Skill />
@@ -248,47 +344,81 @@ export default function Home() {
 
         @keyframes moveStars {
           from {
-            background-position: 0 0, 0 0;
+            background-position:
+              0 0,
+              0 0;
           }
+
           to {
-            background-position: 900px 900px, -700px 700px;
+            background-position:
+              900px 900px,
+              -700px 700px;
           }
         }
 
+        /* Flip Card Container */
         .flip-card {
           perspective: 1200px;
+          -webkit-perspective: 1200px;
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
         }
 
+        /* Flip Card Inner */
         .flip-card-inner {
           position: relative;
           width: 100%;
           height: 100%;
-          transition: transform 0.9s;
+          transition:
+            transform 0.8s ease-in-out,
+            -webkit-transform 0.8s ease-in-out;
           transform-style: preserve-3d;
+          -webkit-transform-style: preserve-3d;
+          transform-origin: center;
+          -webkit-transform-origin: center;
         }
 
-        .flip-card:hover .flip-card-inner {
-          transform: rotateY(180deg);
+        /*
+          Desktop/Laptop hover:
+          No media query is used so browser hover detection cannot block it.
+        */
+        .flip-card:hover > .flip-card-inner {
+          transform: rotateY(180deg) !important;
+          -webkit-transform: rotateY(180deg) !important;
         }
 
+        /* Mobile tap/click */
+        .flip-card.flipped > .flip-card-inner {
+          transform: rotateY(180deg) !important;
+          -webkit-transform: rotateY(180deg) !important;
+        }
+
+        /* Front and Back Common Styling */
         .flip-card-front,
         .flip-card-back {
           position: absolute;
           inset: 0;
+          width: 100%;
+          height: 100%;
           overflow: hidden;
           border-radius: 1.5rem;
           backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
           box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
         }
 
-        .flip-card-back {
-          transform: rotateY(180deg);
+        /* Front Side */
+        .flip-card-front {
+          z-index: 2;
+          transform: rotateY(0deg);
+          -webkit-transform: rotateY(0deg);
         }
 
-        @media (max-width: 768px) {
-          .flip-card:hover .flip-card-inner {
-            transform: none;
-          }
+        /* Back Side */
+        .flip-card-back {
+          z-index: 1;
+          transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
         }
       `}</style>
     </section>
