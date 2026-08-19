@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import {
   Award,
   Sparkles,
@@ -13,17 +13,105 @@ import useDialog from "../hooks/useDialog";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 const certificates = [
-  { source: "/cert66.jpeg", thumbnail: "/optimized/cert66.jpg", title: "Certificate 01" },
-  { source: "/cert2.png", thumbnail: "/optimized/cert2.jpg", title: "Certificate 02" },
-  { source: "/cert1.png", thumbnail: "/optimized/cert1.jpg", title: "Certificate 03" },
-  { source: "/cert4.png", thumbnail: "/optimized/cert4.jpg", title: "Certificate 04" },
-  { source: "/cert11.jpeg", thumbnail: "/optimized/cert11.jpg", title: "Certificate 05" },
-  { source: "/cert22.jpeg", thumbnail: "/optimized/cert22.jpg", title: "Certificate 06" },
-  { source: "/cert33.jpeg", thumbnail: "/optimized/cert33.jpg", title: "Certificate 07" },
-  { source: "/cert44.jpeg", thumbnail: "/optimized/cert44.jpg", title: "Certificate 08" },
-  { source: "/cert55.jpeg", thumbnail: "/optimized/cert55.jpg", title: "Certificate 09" },
-  { source: "/cert3.png", thumbnail: "/optimized/cert3.jpg", title: "Certificate 10" },
-  { source: "/cert20.pdf", title: "Certificate 11", type: "pdf" },
+  { 
+    source: "/cert66.jpeg", 
+    thumbnail: "/optimized/cert66.jpg", 
+    title: "Java - Data Structures & Algorithms",
+    issuer: "Raj Institute of Coding & Robotics (RICR)",
+    category: "Programming",
+    date: "2024",
+    description: "Comprehensive Java training covering data structures, algorithms, and object-oriented programming concepts with real-world problem-solving"
+  },
+  { 
+    source: "/cert2.png", 
+    thumbnail: "/optimized/cert2.jpg", 
+    title: "MERN Full Stack Web Development",
+    issuer: "Raj Institute of Coding & Robotics (RICR)",
+    category: "Full Stack",
+    date: "2024",
+    description: "Complete MERN stack development including MongoDB, Express.js, React.js, and Node.js with project-based learning"
+  },
+  { 
+    source: "/cert1.png", 
+    thumbnail: "/optimized/cert1.jpg", 
+    title: "Full Stack Web Development - Industrial Participation",
+    issuer: "Skill High (SkillHigh)",
+    category: "Full Stack",
+    date: "2025",
+    description: "Industrial participation certificate for completing the Full Stack Web Development program from June 3, 2025 to May 16, 2025"
+  },
+  { 
+    source: "/cert4.png", 
+    thumbnail: "/optimized/cert4.jpg", 
+    title: "AWS Academy Graduate - Cloud Foundation",
+    issuer: "AWS Academy",
+    category: "Cloud",
+    date: "2024",
+    description: "Certificate of completion for AWS Academy Cloud Foundation course with 90 hours of coursework. Digital badge and credentials verified."
+  },
+  { 
+    source: "/cert11.jpeg", 
+    thumbnail: "/optimized/cert11.jpg", 
+    title: "Techfest IIT Bombay Zonal Round - Participation",
+    issuer: "RICR Bhopal & IIT Bombay",
+    category: "Competition",
+    date: "2024",
+    description: "Certificate of participation for competing in Techfest IIT Bombay Zonal Round held at RICR Bhopal on October 6, 2024"
+  },
+  { 
+    source: "/cert22.jpeg", 
+    thumbnail: "/optimized/cert22.jpg", 
+    title: "Movie Recommendation System Using Python - ML",
+    issuer: "RICR Bhopal",
+    category: "Machine Learning",
+    date: "2024",
+    description: "Workshop participation certificate for Machine Learning workshop on Movie Recommendation System using Python (ML) held at RICR Bhopal, May 21-24, 2024"
+  },
+  { 
+    source: "/cert33.jpeg", 
+    thumbnail: "/optimized/cert33.jpg", 
+    title: "Art Canvas using Python - Deep Learning",
+    issuer: "RICR Bhopal",
+    category: "Machine Learning",
+    date: "2024",
+    description: "Workshop participation certificate for Art Canvas using Python - Deep Learning workshop held at RICR Bhopal, May 13-16, 2024"
+  },
+  { 
+    source: "/cert44.jpeg", 
+    thumbnail: "/optimized/cert44.jpg", 
+    title: "Workshop on Internet of Things",
+    issuer: "INDEYES",
+    category: "IoT",
+    date: "2024",
+    description: "Certificate of participation for attending the Internet of Things (IoT) workshop with Certificate ID: IN5316"
+  },
+  { 
+    source: "/cert55.jpeg", 
+    thumbnail: "/optimized/cert55.jpg", 
+    title: "National Science Day Week - Participation",
+    issuer: "TECHNOCRATS - Institute of Technology & Science",
+    category: "Competition",
+    date: "2024",
+    description: "Certificate of participation in National Science Day Week 2024 organized by TECHNOCRATS, MPCST, and NCSTC New Delhi"
+  },
+  { 
+    source: "/cert3.png", 
+    thumbnail: "/optimized/cert3.jpg", 
+    title: "Alpha - Data Structures & Algorithms with Java",
+    issuer: "Apna College",
+    category: "Programming",
+    date: "2024",
+    description: "Certificate of completion for successfully completing the Alpha (DSA with Java) course by Apna College"
+  },
+  { 
+    source: "/cert20.pdf", 
+    title: "Cloud Computing Basics",
+    issuer: "AWS Academy",
+    category: "Cloud",
+    date: "2024",
+    description: "AWS services and cloud infrastructure fundamentals",
+    type: "pdf" 
+  },
 ];
 
 export default function Certificate({ embedded = false }) {
@@ -36,6 +124,17 @@ export default function Certificate({ embedded = false }) {
     Boolean(selectedCert),
     closeCertificate
   );
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedCert) {
+        closeCertificate();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedCert, closeCertificate]);
 
   return (
     <section
@@ -83,8 +182,7 @@ export default function Certificate({ embedded = false }) {
           </HeadingTag>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
-            A premium showcase of my certifications, achievements and learning
-            journey — proof of consistency, practice and growth.
+            Showcasing my professional certifications, continuous learning achievements, and expertise in web development, programming, and modern technologies.
           </p>
         </motion.div>
 
@@ -158,17 +256,21 @@ export default function Certificate({ embedded = false }) {
                   </div>
                 </div>
 
-                <div className="relative z-10 mt-4 flex items-center justify-between gap-3">
+                <div className="relative z-10 mt-4 flex flex-col gap-3">
                   <div>
-                    <h3 className="font-bold text-white">{cert.title}</h3>
+                    <h3 className="font-bold text-white text-lg">{cert.title}</h3>
+                    <p className="mt-1 text-xs text-cyan-300 font-semibold">{cert.issuer}</p>
                     <p className="mt-1 text-xs text-slate-400">
-                      Click to preview full certificate
+                      {cert.description}
                     </p>
                   </div>
 
-                  <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 p-3 text-cyan-300">
-                    <Images size={18} />
-                  </span>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full border border-fuchsia-400/30 bg-fuchsia-400/10 px-3 py-1 text-xs font-semibold text-fuchsia-200">
+                      {cert.category}
+                    </span>
+                    <span className="text-xs text-slate-500">{cert.date}</span>
+                  </div>
                 </div>
               </div>
             </motion.button>
@@ -213,33 +315,37 @@ export default function Certificate({ embedded = false }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeCertificate}
-            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md overflow-y-auto"
           >
             <motion.div
               ref={dialogRef}
-              initial={{ scale: 0.9, y: 40, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: 40, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
               aria-labelledby="certificate-dialog-title"
               tabIndex={-1}
-              className="modal-scroll relative w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-950 p-3 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:rounded-[2rem] sm:p-6"
+              className="relative w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-950 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:rounded-[2rem] sm:p-8 my-8 sm:my-auto"
             >
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={closeCertificate}
                 aria-label="Close certificate preview"
-                className="absolute right-3 top-3 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/90 text-white shadow-lg ring-1 ring-white/15 transition hover:bg-red-500 sm:right-4 sm:top-4"
+                className="sticky bottom-4 right-4 sm:absolute sm:right-6 sm:bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 border border-cyan-400/40 text-cyan-300 shadow-lg backdrop-blur-md transition duration-300 hover:border-cyan-300 hover:bg-gradient-to-br hover:from-cyan-500/40 hover:to-fuchsia-500/40 hover:shadow-xl"
               >
-                <X size={20} />
+                <X size={24} strokeWidth={2.5} />
               </button>
 
+              <div className="text-xs text-slate-400 mb-4 sm:absolute sm:left-4 sm:top-4 sm:mb-0">
+                <span className="hidden sm:inline">Press ESC or click outside to close</span>
+              </div>
+
               {selectedCert.type === "pdf" ? (
-                <div className="rounded-2xl bg-white/5 p-3 pt-16 sm:pt-3">
+                <div className="rounded-2xl bg-white/5 p-4 mt-4 sm:mt-0">
                   {showPdfPreview ? (
                     <iframe
                       src={selectedCert.source}
@@ -266,22 +372,44 @@ export default function Certificate({ embedded = false }) {
                   </a>
                 </div>
               ) : (
-                <div className="rounded-2xl bg-white/5 p-3 pt-16 sm:pt-3">
+                <div className="rounded-2xl bg-white/5 p-4 mt-4 sm:mt-0">
                   <img
                     src={selectedCert.source}
                     alt={selectedCert.title}
                     decoding="async"
-                    className="max-h-[72dvh] w-full rounded-xl object-contain"
+                    className="max-h-[70dvh] w-full rounded-xl object-contain"
                   />
                 </div>
               )}
 
-              <h2
-                id="certificate-dialog-title"
-                className="mt-5 pr-12 text-xl font-black text-cyan-300 sm:text-2xl"
-              >
-                {selectedCert.title}
-              </h2>
+              <div className="mt-6">
+                <h2
+                  id="certificate-dialog-title"
+                  className="pr-12 text-2xl font-black text-cyan-300 sm:text-3xl"
+                >
+                  {selectedCert.title}
+                </h2>
+
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  <div>
+                    <p className="text-xs text-slate-400 font-semibold">ISSUING ORGANIZATION</p>
+                    <p className="mt-1 text-sm font-bold text-white">{selectedCert.issuer}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-400 font-semibold">CATEGORY</p>
+                    <p className="mt-1 text-sm font-bold text-fuchsia-300">{selectedCert.category}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-400 font-semibold">YEAR EARNED</p>
+                    <p className="mt-1 text-sm font-bold text-cyan-300">{selectedCert.date}</p>
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <p className="text-xs text-slate-400 font-semibold">DESCRIPTION</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{selectedCert.description}</p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}

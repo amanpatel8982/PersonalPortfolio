@@ -24,73 +24,81 @@ export default function Portfolio({ embedded = false }) {
   const frontendProjects = [
     {
       title: "Currency Converter",
-      desc: "Real-time currency conversion with live exchange rates.",
+      desc: "Real-time currency conversion with live exchange rates and clean interface.",
       img: "/CURR.png",
       details:
-        "This Currency Converter app allows users to convert amounts between different currencies in real time with a clean and simple interface.",
+        "A fully functional Currency Converter application that fetches real-time exchange rates from a public API. Features include multi-currency support, instant conversion, and a user-friendly interface built with vanilla JavaScript.",
+      features: ["Live Exchange Rates", "Multi-Currency Support", "Instant Conversion", "Responsive Design"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "https://amanpatel8982.github.io/CurrencyConvertor/",
     },
     {
-      title: "Furni",
-      desc: "A furniture marketplace UI with clean layout.",
+      title: "Furni - Furniture Store",
+      desc: "Modern furniture marketplace UI with intuitive navigation and product showcase.",
       img: "/furni.png",
       details:
-        "Furniture Marketplace UI built using HTML and CSS. It focuses on clean product presentation and responsive layout.",
+        "A professional furniture marketplace UI designed with clean HTML and CSS. Focuses on excellent product presentation, responsive grid layouts, and a modern aesthetic that provides an engaging shopping experience.",
+      features: ["Product Grid", "Category Navigation", "Responsive Layout", "Modern Design"],
       tech: ["HTML", "CSS"],
       demo: "https://github.com/amanpatel8982/FURNI.git",
     },
     {
-      title: "Rock Paper Scissors",
-      desc: "Interactive browser game with JavaScript logic. ",
+      title: "Rock Paper Scissors Game",
+      desc: "Interactive browser game with score tracking and smooth animations.",
       img: "/rock.png",
       details:
-        "Classic Rock Paper Scissors game with interactive UI, score logic and smooth browser-based gameplay.",
+        "Classic Rock Paper Scissors game built with JavaScript featuring game logic, computer AI, score tracking, and dynamic UI updates. Provides smooth user experience with instant feedback.",
+      features: ["Game Logic", "Score Tracking", "Computer AI", "Instant Feedback"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
     {
-      title: "Job finder",
-      desc: "A job search platform with modern UI and responsive design.",
+      title: "Job Finder Portal",
+      desc: "Job search platform with advanced filters and modern responsive design.",
       img: "/front1.png",
       details:
-        "Job finder app to help users search and apply for jobs efficiently.",
+        "A comprehensive job search platform designed to help users discover and apply for jobs. Features include search functionality, job filters, and a clean, modern interface for optimal user experience.",
+      features: ["Job Search", "Advanced Filters", "Job Details", "Application Tracking"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
     {
-      title: "Food Mart",
-      desc: "A food delivery website with vibrant design and user-friendly interface.",
+      title: "Food Mart - Food Delivery",
+      desc: "Vibrant food delivery platform with restaurant menu and ordering interface.",
       img: "/front2.png",
       details:
-        "Food Mart is a modern food delivery platform with a vibrant design and user-friendly interface.",
+        "Modern food delivery website featuring restaurant listings, menu browsing, and seamless ordering interface. Built with responsive design principles for excellent mobile and desktop experience.",
+      features: ["Restaurant Listings", "Menu Display", "Order System", "Responsive UI"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
     {
-      title: "Calculator",
-      desc: "A functional calculator with a sleek design and smooth user experience.",
+      title: "Advanced Calculator",
+      desc: "Feature-rich calculator with sleek design and smooth mathematical operations.",
       img: "/front3.png",
       details:
-        "A modern calculator with a sleek design and smooth user experience.",
+        "A fully functional calculator application with a modern, sleek interface. Supports basic and advanced mathematical operations with proper error handling and smooth user experience.",
+      features: ["Basic Operations", "Advanced Functions", "Error Handling", "Modern UI"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
     {
       title: "OTP Generator",
-      desc: "A secure one-time password generator for authentication purposes.",
+      desc: "Secure one-time password generator for authentication and verification purposes.",
       img: "/front4.png",
       details:
-        "A secure OTP generator for authentication purposes with a clean and simple interface.",
+        "A secure OTP (One-Time Password) generator designed for authentication workflows. Generates unique, time-based OTPs with a clean interface and copy-to-clipboard functionality.",
+      features: ["OTP Generation", "Copy to Clipboard", "Time-Based", "Secure"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
     {
       title: "TO-DO-LIST",
-      desc: "A simple to-do list application with task management features.",
+      desc: "Intuitive task management application with add, edit, and delete functionality.",
       img: "/front5.png",
       details:
-        "A clean and intuitive to-do list application for managing tasks and improving productivity.",
+        "A clean and intuitive to-do list application for managing daily tasks and improving productivity. Features include task creation, editing, deletion, and persistent local storage.",
+      features: ["Task Management", "Add/Edit/Delete", "Local Storage", "Clean UI"],
       tech: ["HTML", "CSS", "JavaScript"],
       demo: "#",
     },
@@ -99,48 +107,53 @@ export default function Portfolio({ embedded = false }) {
   const backendProjects = [
     {
       title: "Event Planner",
-      desc: "AI based event scheduling platform.",
+      desc: "Smart event scheduling platform with AI-powered recommendations and real-time updates.",
       img: "/project1.jpg",
       details:
-        "Event Planner is a smart scheduling platform where users can manage events, plan schedules and handle event-related workflows.",
+        "Event Planner is an intelligent scheduling platform that helps users manage events, plan schedules, and handle event-related workflows. Built with React frontend and Node.js/Express backend, featuring MongoDB database for persistent storage and real-time updates.",
+      features: ["Event Management", "Smart Scheduling", "Real-time Updates", "User Dashboard", "Event Analytics"],
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://event-planner-by-aman0.netlify.app/",
       video: "/event.mp4",
     },
     {
-      title: "Chat App",
-      desc: "Real-time chat application with Socket.IO.",
+      title: "Chat App - Real-time Messaging",
+      desc: "Real-time chat application with Socket.IO, JWT authentication, and instant message delivery.",
       img: "/project2.jpg",
       details:
-        "Real-time chat application using Socket.IO, JWT authentication and Express backend for smooth live communication.",
+        "A full-featured real-time chat application built with React frontend and Express backend. Utilizes Socket.IO for instant message delivery, JWT authentication for secure user sessions, and provides a seamless communication experience.",
+      features: ["Real-time Messaging", "User Authentication", "Online Status", "Message History", "Typing Indicators"],
       tech: ["React", "Express", "JWT", "Socket.IO"],
       demo: "#",
       video: "/chat.mp4",
     },
     {
-      title: "MyHealthFile",
-      desc: "Digital medical record management system.",
+      title: "MyHealthFile - Medical Records",
+      desc: "Digital medical record management system for secure patient data storage and retrieval.",
       img: "/project3.jpg",
       details:
-        "Healthcare platform for managing medical records, patient information and health-related data through modern dashboards.",
+        "Healthcare platform designed for secure management of medical records and patient information. Features intuitive dashboards for health tracking, prescription management, and appointment scheduling. Built with React, Node.js, Express, and MongoDB for robust data handling.",
+      features: ["Medical Records", "Prescription Management", "Appointment Booking", "Health Dashboard", "Data Security"],
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://my-health-file-by-aman.netlify.app/",
     },
     {
-      title: "AI-Invoice",
-      desc: "Generate professional invoices in seconds.",
+      title: "AI-Invoice - Invoice Generator",
+      desc: "AI-powered invoice generation platform for creating professional invoices in seconds.",
       img: "/project4.png",
       details:
-        "AI-Invoice helps users generate ready-to-send invoices instantly with a professional layout and fast workflow.",
+        "AI-Invoice streamlines invoice creation with intelligent templates and instant PDF generation. Users can create professional invoices, manage clients, track payments, and access invoice history. Built with React, Node.js, Express, and MongoDB backend.",
+      features: ["Auto Invoice Generation", "Client Management", "Payment Tracking", "PDF Export", "Invoice Templates"],
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://ai-invoice-by-aman.netlify.app/",
     },
-     {
-      title: "Health Nexus",
-      desc: "AI-powered fitness and health tracking platform with personalized insights and recommendations.",
+    {
+      title: "Health Nexus - Fitness Tracker",
+      desc: "AI-powered fitness and health tracking platform with personalized insights and wellness recommendations.",
       img: "/project5.png",
       details:
-        "Health Nexus provides personalized fitness and health tracking with AI-driven insights and recommendations.",
+        "Health Nexus provides comprehensive fitness and health tracking with AI-driven personalized recommendations. Features include workout logging, nutrition tracking, progress analytics, and intelligent health insights. Built with React frontend and Node.js/MongoDB backend.",
+      features: ["Workout Tracking", "Nutrition Logging", "AI Recommendations", "Progress Analytics", "Health Insights"],
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
       demo: "https://vermillion-griffin-998a4f.netlify.app/",
     },
@@ -317,6 +330,24 @@ export default function Portfolio({ embedded = false }) {
                       {project.desc}
                     </p>
 
+                    {project.features && (
+                      <div className="mt-3 flex flex-wrap gap-1">
+                        {project.features.slice(0, 2).map((feature) => (
+                          <span
+                            key={feature}
+                            className="text-xs text-cyan-300 font-semibold"
+                          >
+                            • {feature}
+                          </span>
+                        ))}
+                        {project.features.length > 2 && (
+                          <span className="text-xs text-slate-500">
+                            +{project.features.length - 2} more
+                          </span>
+                        )}
+                      </div>
+                    )}
+
                     <div className="mt-4 flex flex-wrap gap-2">
                       {project.tech.map((tech) => (
                         <span
@@ -427,6 +458,20 @@ export default function Portfolio({ embedded = false }) {
                 <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">
                   {selectedProject.details}
                 </p>
+
+                <div className="mt-6">
+                  <h3 className="text-sm font-bold text-white mb-3">Key Features:</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.features?.map((feature) => (
+                      <span
+                        key={feature}
+                        className="rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-200"
+                      >
+                        ✓ {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   {selectedProject.tech.map((tech) => (

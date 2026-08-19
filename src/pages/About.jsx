@@ -61,19 +61,24 @@ export default function About({ embedded = false }) {
         >
           <div className="mx-auto max-w-4xl space-y-4 text-center text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-lg">
             <p>
-              Hello, I&apos;m{" "}
-              <span className="font-bold text-white">Aman Patel</span>, a Full
-              Stack Developer who builds modern, scalable and user-friendly web
-              applications with React, Node.js, Express and MongoDB.
+              I am <span className="font-bold text-white">Aman Patel</span>, a
+              Computer Science engineer (AIML specialization) and Full Stack
+              Developer. I design and build responsive, accessible web
+              applications using React and Tailwind CSS, and develop scalable
+              backend services with Node.js, Express and MongoDB.
             </p>
             <p>
-              I focus on clean code, responsive interfaces and a smooth user
-              experience. I enjoy turning ideas into practical products and
-              continuously improving my craft.
+              My approach emphasizes clean, maintainable code, pragmatic API
+              design (RESTful services), and sound database modelling across
+              MongoDB and MySQL. I have hands-on experience with authentication
+              (JWT, OAuth), real-time features (Socket.IO), and deployment
+              workflows using Git, GitHub and Netlify.
             </p>
             <p>
-              My goal is to grow as a professional developer, contribute to
-              meaningful projects and move towards AI and data-driven systems.
+              I enjoy solving problems, building production-ready features, and
+              learning data-driven techniques. I am actively seeking
+              opportunities to contribute to impactful projects and expand my
+              expertise in AI and data systems.
             </p>
           </div>
 
