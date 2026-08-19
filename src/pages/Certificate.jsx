@@ -16,7 +16,7 @@ const certificates = [
   { 
     source: "/cert66.jpeg", 
     thumbnail: "/optimized/cert66.jpg", 
-    title: "Java - Data Structures & Algorithms",
+    title: "Java - Data Structures & Algorithms with Mern Full Stack web development",
     issuer: "Raj Institute of Coding & Robotics (RICR)",
     category: "Programming",
     date: "2024",

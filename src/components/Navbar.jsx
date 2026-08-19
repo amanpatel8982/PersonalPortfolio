@@ -309,7 +309,7 @@ export default function Navbar() {
 
           <div className="hidden shrink-0 items-center gap-2 xl:flex">
             <motion.a
-              href="/resume.pdf"
+              href="/Aman_Patel_SoftwareDeveloper.pdf"
               download="Aman-Patel-Resume.pdf"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -334,7 +334,7 @@ export default function Navbar() {
 
           <div className="ml-auto flex shrink-0 items-center gap-2 xl:hidden">
             <a
-              href="/resume.pdf"
+              href="/Aman_Patel_SoftwareDeveloper.pdf"
               download="Aman-Patel-Resume.pdf"
               className="hidden h-11 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.055] px-3 text-sm font-semibold text-slate-200 transition hover:border-violet-300/30 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:flex"
               aria-label="Download Aman Patel's resume"
@@ -468,7 +468,7 @@ export default function Navbar() {
 
               <div className="mt-3 grid grid-cols-2 gap-2 border-t border-white/10 px-1 pt-3">
                 <a
-                  href="/resume.pdf"
+                  href="/Aman_Patel_SoftwareDeveloper.pdf"
                   download="Aman-Patel-Resume.pdf"
                   className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.055] px-3 text-sm font-semibold text-slate-200 transition hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
                 >

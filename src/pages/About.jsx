@@ -86,7 +86,7 @@ export default function About({ embedded = false }) {
             <motion.a
               whileHover={{ scale: 1.06, y: -3 }}
               whileTap={{ scale: 0.96 }}
-              href="/resume.pdf"
+              href="/Aman_Patel_SoftwareDeveloper.pdf"
               download="Aman-Resume.pdf"
               className="w-full rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px] sm:w-auto"
             >
