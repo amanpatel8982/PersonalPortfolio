@@ -315,7 +315,7 @@ export default function Certificate({ embedded = false }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeCertificate}
-            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-md sm:items-center"
           >
             <motion.div
               ref={dialogRef}
@@ -328,14 +328,14 @@ export default function Certificate({ embedded = false }) {
               aria-modal="true"
               aria-labelledby="certificate-dialog-title"
               tabIndex={-1}
-              className="relative w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-950 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:rounded-[2rem] sm:p-8 my-8 sm:my-auto"
+              className="relative my-4 max-h-[calc(100dvh-2rem)] w-full max-w-5xl overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.65)] overscroll-contain sm:my-auto sm:rounded-[2rem] sm:p-8"
             >
               <button
                 ref={closeButtonRef}
                 type="button"
                 onClick={closeCertificate}
                 aria-label="Close certificate preview"
-                className="sticky bottom-4 right-4 sm:absolute sm:right-6 sm:bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 border border-cyan-400/40 text-cyan-300 shadow-lg backdrop-blur-md transition duration-300 hover:border-cyan-300 hover:bg-gradient-to-br hover:from-cyan-500/40 hover:to-fuchsia-500/40 hover:shadow-xl"
+                className="sticky top-0 z-50 ml-auto flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400/40 bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 text-cyan-300 shadow-lg backdrop-blur-md transition duration-300 hover:border-cyan-300 hover:bg-gradient-to-br hover:from-cyan-500/40 hover:to-fuchsia-500/40 hover:shadow-xl sm:absolute sm:right-6 sm:top-6"
               >
                 <X size={24} strokeWidth={2.5} />
               </button>

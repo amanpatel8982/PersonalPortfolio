@@ -255,7 +255,7 @@ export default function Home() {
             aria-pressed={isFlipped}
           >
             <span className="flip-card-inner block">
-              <span className="flip-card-front block border border-white/10 bg-white/10 backdrop-blur-xl">
+              <span className="flip-card-front block overflow-hidden rounded-[1.75rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.14),transparent_32%),rgba(2,6,23,0.82)] shadow-[0_0_40px_rgba(34,211,238,0.08)] backdrop-blur-xl">
                 <span className="absolute left-0 right-0 top-5 z-20 text-center font-serif text-xs text-cyan-200 sm:text-sm">
                   Hover or tap to explore
                 </span>
@@ -277,14 +277,16 @@ export default function Home() {
                 )}
               </span>
 
-              <span className="flip-card-back block border border-white/10 bg-slate-950 backdrop-blur-xl">
+              <span className="flip-card-back relative block overflow-hidden rounded-[1.75rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.22),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,211,238,0.18),transparent_30%),rgba(2,6,23,0.9)] shadow-[0_0_45px_rgba(168,85,247,0.12)] backdrop-blur-xl">
+                <span className="absolute inset-5 rounded-[1.2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_42%)]" aria-hidden="true" />
+                <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.12),transparent_36%)]" aria-hidden="true" />
                 <img
                   src="/optimized/aman-profile.jpg"
                   alt="Aman Patel"
                   width="900"
                   height="963"
                   decoding="async"
-                  className="h-full w-full object-cover object-top"
+                  className="relative z-10 h-full w-full rounded-[1.5rem] object-cover object-top shadow-[0_0_30px_rgba(34,211,238,0.12)]"
                 />
               </span>
             </span>
