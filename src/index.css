@@ -1,48 +1,221 @@
 @import "tailwindcss";
 
-
-
-
-
-
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+:root {
+  color: #f8fafc;
+  background: #030712;
+  font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
 }
 
-.animated-bg {
-  background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4facfe, #43e97b);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  scrollbar-gutter: stable;
+  background: #030712;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(124, 58, 237, 0.18), transparent 28rem),
+    radial-gradient(circle at 88% 42%, rgba(8, 145, 178, 0.12), transparent 30rem),
+    #030712;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(103, 232, 249, 0.16);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-serif {
+  font-family: "Space Grotesk", "DM Sans", sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #f8fafc;
+  background: rgba(6, 182, 212, 0.45);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  transform: translateY(-150%);
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  padding: 0.65rem 1rem;
+  color: #020617;
+  font-weight: 700;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-section {
+  min-height: 100svh;
+  overflow: hidden;
+  padding-block: clamp(5.75rem, 8vw, 7rem) clamp(4rem, 7vw, 6rem);
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+  scroll-margin-top: 5.5rem;
+}
+
+.ambient-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(217, 70, 239, 0.12), transparent 38%),
+    radial-gradient(ellipse at 50% 110%, rgba(6, 182, 212, 0.1), transparent 42%);
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: -30% -10%;
+  opacity: 0.2;
+  transform: perspective(900px) rotateX(62deg) scale(1.35);
+  transform-origin: center bottom;
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 132, 252, 0.09) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent 5%, black 42%, transparent 95%);
+  animation: gridDrift 24s linear infinite;
+  will-change: background-position;
+}
+
+.ambient-sweep {
+  position: absolute;
+  top: -20%;
+  left: -35%;
+  width: 170%;
+  height: 45%;
+  opacity: 0.28;
+  transform: rotate(-8deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(217, 70, 239, 0.08) 35%,
+    rgba(34, 211, 238, 0.18) 50%,
+    rgba(217, 70, 239, 0.08) 65%,
+    transparent
+  );
+  filter: blur(35px);
+  animation: ambientSweep 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ambient-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+.stars-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100svh;
+  pointer-events: none;
+  contain: strict;
+  background-repeat: repeat;
+}
+
+.stars-small {
+  opacity: 0.34;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: moveStars 55s linear infinite;
+}
+
+.stars-medium {
+  opacity: 0.26;
+  background-image: radial-gradient(#c084fc 1.5px, transparent 1.5px);
+  background-size: 150px 150px;
+  animation: moveStars 85s linear infinite reverse;
+}
+
+.stars-large {
+  opacity: 0.18;
+  background-image: radial-gradient(#22d3ee 2px, transparent 2px);
+  background-size: 250px 250px;
+  animation: moveStars 120s linear infinite;
+}
+
+.cursor-glow {
+  display: none;
 }
 
 .flip-card {
   perspective: 1200px;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.9s ease;
+  transition: transform 0.8s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 }
 
-/* Mobile पर tap/click से flip */
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
-}
-
-/* Desktop/laptop पर hover से flip */
-@media (hover: hover) and (pointer: fine) {
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
 }
 
 .flip-card-front,
@@ -52,7 +225,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: clamp(1.25rem, 4vw, 1.75rem);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
@@ -64,4 +237,99 @@
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+.modal-scroll {
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-glow {
+    display: block;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .ambient-grid,
+  .ambient-sweep,
+  .ambient-noise,
+  .stars-medium,
+  .stars-large {
+    display: none;
+  }
+
+  .stars-small {
+    opacity: 0.2;
+    animation: none;
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 144px, 144px 0;
+  }
+}
+
+@keyframes ambientSweep {
+  0%,
+  100% {
+    transform: translate3d(-8%, -12%, 0) rotate(-8deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate3d(10%, 30%, 0) rotate(-8deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes moveStars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1000px 1000px;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #ff6ec4, #7873f5, #4facfe, #43e97b);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

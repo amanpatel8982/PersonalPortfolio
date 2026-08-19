@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   Code,
   Database,
@@ -9,10 +9,17 @@ import {
   PlayCircle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import useDialog from "../hooks/useDialog";
 
-export default function Portfolio() {
+export default function Portfolio({ embedded = false }) {
   const [activeTab, setActiveTab] = useState("frontend");
   const [selectedProject, setSelectedProject] = useState(null);
+  const HeadingTag = embedded ? "h2" : "h1";
+  const closeProject = useCallback(() => setSelectedProject(null), []);
+  const { dialogRef, closeButtonRef } = useDialog(
+    Boolean(selectedProject),
+    closeProject
+  );
 
   const frontendProjects = [
     {
@@ -40,7 +47,7 @@ export default function Portfolio() {
       details:
         "Classic Rock Paper Scissors game with interactive UI, score logic and smooth browser-based gameplay.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
     {
       title: "Job finder",
@@ -49,7 +56,7 @@ export default function Portfolio() {
       details:
         "Job finder app to help users search and apply for jobs efficiently.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
     {
       title: "Food Mart",
@@ -58,7 +65,7 @@ export default function Portfolio() {
       details:
         "Food Mart is a modern food delivery platform with a vibrant design and user-friendly interface.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
     {
       title: "Calculator",
@@ -67,7 +74,7 @@ export default function Portfolio() {
       details:
         "A modern calculator with a sleek design and smooth user experience.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
     {
       title: "OTP Generator",
@@ -76,7 +83,7 @@ export default function Portfolio() {
       details:
         "A secure OTP generator for authentication purposes with a clean and simple interface.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
     {
       title: "TO-DO-LIST",
@@ -85,7 +92,7 @@ export default function Portfolio() {
       details:
         "A clean and intuitive to-do list application for managing tasks and improving productivity.",
       tech: ["HTML", "CSS", "JavaScript"],
-      demo: "https://amanpatel8982.github.io/Rock-paper-Scissors/",
+      demo: "#",
     },
   ];
 
@@ -150,19 +157,25 @@ export default function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="relative min-h-screen overflow-hidden bg-transparent px-4 py-24 text-white sm:px-6 lg:px-10"
+      className="page-section relative bg-transparent text-white"
     >
-      <motion.div
-        animate={{ x: [0, 90, 0], y: [0, -40, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-0 top-24 h-64 w-64 rounded-full bg-fuchsia-600/20 blur-3xl"
-      />
+      {!embedded && (
+        <>
+          <motion.div
+            animate={{ x: [0, 90, 0], y: [0, -40, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute left-0 top-24 hidden h-64 w-64 rounded-full bg-fuchsia-600/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
 
-      <motion.div
-        animate={{ x: [0, -90, 0], y: [0, 55, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 right-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl"
-      />
+          <motion.div
+            animate={{ x: [0, -90, 0], y: [0, 55, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute bottom-20 right-0 hidden h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
+        </>
+      )}
 
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Heading */}
@@ -178,12 +191,12 @@ export default function Portfolio() {
             My Work Showcase
           </p>
 
-          <h2 className="font-serif text-4xl font-black sm:text-5xl md:text-6xl">
+          <HeadingTag className="font-serif text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
             Portfolio{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(168,85,247,0.5)]">
               Showcase
             </span>
-          </h2>
+          </HeadingTag>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
             Explore my frontend and full-stack projects built with modern UI,
@@ -224,6 +237,8 @@ export default function Portfolio() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
           className="mx-auto mt-10 flex w-full max-w-md rounded-2xl border border-white/10 bg-white/10 p-2 backdrop-blur-xl"
+          role="group"
+          aria-label="Project categories"
         >
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -231,10 +246,12 @@ export default function Portfolio() {
             return (
               <button
                 key={tab.id}
+                type="button"
                 onClick={() => setActiveTab(tab.id)}
+                aria-pressed={activeTab === tab.id}
                 className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all sm:text-base ${
                   activeTab === tab.id
-                    ? "bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 text-white shadow-[0_0_25px_rgba(34,211,238,0.25)]"
+                    ? "bg-gradient-to-r from-fuchsia-700 via-violet-700 to-cyan-700 text-white shadow-[0_0_25px_rgba(34,211,238,0.2)]"
                     : "text-slate-300 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -253,7 +270,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -25 }}
             transition={{ duration: 0.35 }}
-            className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-3"
+            className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 md:gap-7 xl:grid-cols-3"
           >
             {displayedProjects.map((project, i) => (
               <motion.div
@@ -265,15 +282,19 @@ export default function Portfolio() {
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="group relative overflow-hidden rounded-[1.75rem] bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px] shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
               >
-                <div className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-[1.65rem] border border-white/10 bg-slate-950/90 backdrop-blur-2xl">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[1.65rem] border border-white/10 bg-slate-950/90 backdrop-blur-2xl sm:min-h-[420px]">
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
                   {/* Image */}
-                  <div className="relative h-56 overflow-hidden sm:h-60">
+                  <div className="relative aspect-video overflow-hidden bg-slate-900">
                     <img
                       src={project.img}
                       alt={project.title}
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                      width="960"
+                      height="540"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-contain transition duration-700 group-hover:scale-105"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
@@ -308,21 +329,25 @@ export default function Portfolio() {
                     </div>
 
                     <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${
-                          project.demo === "#"
-                            ? "pointer-events-none bg-white/5 text-slate-500"
-                            : "bg-gradient-to-r from-fuchsia-500 to-cyan-400 text-white hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]"
-                        }`}
-                      >
-                        <ExternalLink size={16} />
-                        Live Demo
-                      </a>
+                      {project.demo === "#" ? (
+                        <span className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white/5 px-4 py-3 text-sm font-bold text-slate-500">
+                          <ExternalLink size={16} />
+                          Demo Soon
+                        </span>
+                      ) : (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-700 to-cyan-700 px-4 py-3 text-sm font-bold text-white transition hover:shadow-[0_0_25px_rgba(34,211,238,0.3)]"
+                        >
+                          <ExternalLink size={16} />
+                          Live Demo
+                        </a>
+                      )}
 
                       <button
+                        type="button"
                         onClick={() => setSelectedProject(project)}
                         className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm font-bold text-white transition hover:border-cyan-300/40 hover:text-cyan-200"
                       >
@@ -346,19 +371,27 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
-            onClick={() => setSelectedProject(null)}
+            onClick={closeProject}
           >
             <motion.div
+              ref={dialogRef}
               initial={{ scale: 0.9, y: 40, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 40, opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[2rem] border border-white/10 bg-slate-950 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:p-6"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-dialog-title"
+              tabIndex={-1}
+              className="modal-scroll relative w-full max-w-4xl rounded-3xl border border-white/10 bg-slate-950 p-3 shadow-[0_30px_100px_rgba(0,0,0,0.65)] sm:rounded-[2rem] sm:p-6"
             >
               <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute right-4 top-4 z-20 rounded-full bg-red-500 p-2 text-white shadow-lg transition hover:bg-red-600"
+                ref={closeButtonRef}
+                type="button"
+                onClick={closeProject}
+                aria-label="Close project details"
+                className="absolute right-3 top-3 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/90 text-white shadow-lg ring-1 ring-white/15 transition hover:bg-red-500 sm:right-4 sm:top-4"
               >
                 <X size={20} />
               </button>
@@ -367,20 +400,27 @@ export default function Portfolio() {
                 <video
                   src={selectedProject.video}
                   controls
-                  autoPlay
-                  muted
-                  className="h-60 w-full rounded-2xl object-cover sm:h-80"
+                  poster={selectedProject.img}
+                  preload="metadata"
+                  playsInline
+                  className="aspect-video w-full rounded-2xl bg-black object-contain"
                 />
               ) : (
                 <img
                   src={selectedProject.img}
                   alt={selectedProject.title}
-                  className="h-60 w-full rounded-2xl object-cover sm:h-80"
+                  width="1280"
+                  height="720"
+                  decoding="async"
+                  className="aspect-video w-full rounded-2xl bg-slate-900 object-contain"
                 />
               )}
 
               <div className="mt-6">
-                <h2 className="text-2xl font-black text-cyan-300 sm:text-3xl">
+                <h2
+                  id="project-dialog-title"
+                  className="pr-12 text-2xl font-black text-cyan-300 sm:text-3xl"
+                >
                   {selectedProject.title}
                 </h2>
 
@@ -399,19 +439,22 @@ export default function Portfolio() {
                   ))}
                 </div>
 
-                <a
-                  href={selectedProject.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-3 font-bold transition ${
-                    selectedProject.demo === "#"
-                      ? "pointer-events-none bg-white/5 text-slate-500"
-                      : "bg-gradient-to-r from-fuchsia-500 to-cyan-400 text-white"
-                  }`}
-                >
-                  <ExternalLink size={18} />
-                  Open Project
-                </a>
+                {selectedProject.demo === "#" ? (
+                  <span className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white/5 px-5 py-3 font-bold text-slate-500">
+                    <ExternalLink size={18} />
+                    Demo coming soon
+                  </span>
+                ) : (
+                  <a
+                    href={selectedProject.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-700 to-cyan-700 px-5 py-3 font-bold text-white"
+                  >
+                    <ExternalLink size={18} />
+                    Open Project
+                  </a>
+                )}
               </div>
             </motion.div>
           </motion.div>

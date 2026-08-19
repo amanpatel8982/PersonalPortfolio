@@ -4,8 +4,9 @@ import { GraduationCap, BookOpen, Award, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-export default function About() {
+export default function About({ embedded = false }) {
   const navigate = useNavigate();
+  const HeadingTag = embedded ? "h2" : "h1";
 
   const education = [
     {
@@ -28,7 +29,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen overflow-hidden bg-transparent px-4 py-24 text-white sm:px-6 lg:px-10"
+      className="page-section relative bg-transparent text-white"
     >
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
@@ -43,12 +44,12 @@ export default function About() {
             My Journey
           </p>
 
-          <h2 className="font-serif text-4xl font-black sm:text-5xl md:text-6xl">
+          <HeadingTag className="font-serif text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
             About{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(168,85,247,0.5)]">
               Me
             </span>
-          </h2>
+          </HeadingTag>
         </motion.div>
 
         <motion.div
@@ -58,14 +59,23 @@ export default function About() {
           viewport={{ once: true }}
           className="mt-12 rounded-[2rem] border border-white/10 bg-white/10 p-6 shadow-[0_25px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8 md:p-10"
         >
-          <p className="mx-auto max-w-4xl text-center font-serif text-sm leading-8 text-slate-300 sm:text-base md:text-lg">
-            Hello, I'm{" "}
-            <span className="font-bold text-white">Aman Patel</span>, passionate Full Stack Developer skilled in building modern, scalable, and user-friendly web applications. I work with technologies like React, Node.js, Express, and MongoDB to create complete end-to-end solutions.
-
-I focus on writing clean code, designing responsive interfaces, and delivering a smooth user experience. I enjoy turning ideas into real-world projects and continuously improving my skills.
-
-My goal is to grow as a professional developer and work on impactful projects while moving towards advanced fields like AI and data-driven systems. 🚀
-          </p>
+          <div className="mx-auto max-w-4xl space-y-4 text-center text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-lg">
+            <p>
+              Hello, I&apos;m{" "}
+              <span className="font-bold text-white">Aman Patel</span>, a Full
+              Stack Developer who builds modern, scalable and user-friendly web
+              applications with React, Node.js, Express and MongoDB.
+            </p>
+            <p>
+              I focus on clean code, responsive interfaces and a smooth user
+              experience. I enjoy turning ideas into practical products and
+              continuously improving my craft.
+            </p>
+            <p>
+              My goal is to grow as a professional developer, contribute to
+              meaningful projects and move towards AI and data-driven systems.
+            </p>
+          </div>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.a
@@ -73,19 +83,26 @@ My goal is to grow as a professional developer and work on impactful projects wh
               whileTap={{ scale: 0.96 }}
               href="/resume.pdf"
               download="Aman-Resume.pdf"
-              className="rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px]"
+              className="w-full rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px] sm:w-auto"
             >
-              <span className="flex items-center gap-2 rounded-2xl bg-slate-950 px-7 py-3 font-bold text-white">
+              <span className="flex items-center justify-center gap-2 rounded-2xl bg-slate-950 px-7 py-3 font-bold text-white">
                 <FiDownload />
                 Download Resume
               </span>
             </motion.a>
 
             <motion.button
+              type="button"
               whileHover={{ scale: 1.06, y: -3 }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => navigate("/portfolio")}
-              className="flex items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-7 py-3 font-bold text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:text-cyan-200"
+              onClick={() =>
+                embedded
+                  ? document
+                      .getElementById("portfolio")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                  : navigate("/portfolio")
+              }
+              className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-7 py-3 font-bold text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:text-cyan-200 sm:w-auto"
             >
               <BiCodeAlt />
               View Projects

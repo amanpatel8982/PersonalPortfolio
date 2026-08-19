@@ -18,25 +18,31 @@ const experiences = [
   },
 ];
 
-export default function Experience() {
+export default function Experience({ embedded = false }) {
+  const HeadingTag = embedded ? "h2" : "h1";
+
   return (
     <section
       id="experience"
-      className="relative min-h-screen overflow-hidden 
-                 bg-transparent px-4 py-24 text-white sm:px-6 lg:px-10"
+      className="page-section relative bg-transparent text-white"
     >
-      {/* Glow Effects */}
-      <motion.div
-        animate={{ x: [0, 80, 0], y: [0, -50, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute left-0 top-20 h-60 w-60 rounded-full bg-purple-600/20 blur-3xl"
-      />
+      {!embedded && (
+        <>
+          <motion.div
+            animate={{ x: [0, 80, 0], y: [0, -50, 0] }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="pointer-events-none absolute left-0 top-20 hidden h-60 w-60 rounded-full bg-purple-600/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
 
-      <motion.div
-        animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
-        transition={{ duration: 9, repeat: Infinity }}
-        className="absolute bottom-20 right-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl"
-      />
+          <motion.div
+            animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
+            transition={{ duration: 9, repeat: Infinity }}
+            className="pointer-events-none absolute bottom-20 right-0 hidden h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
+        </>
+      )}
 
       <div className="relative z-10 max-w-5xl mx-auto">
 
@@ -54,16 +60,16 @@ export default function Experience() {
             My Journey
           </p>
 
-          <h2 className="mt-5 text-4xl md:text-6xl font-black font-serif">
+          <HeadingTag className="mt-5 font-serif text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
             My{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
               Experience
             </span>
-          </h2>
+          </HeadingTag>
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative border-l border-white/20 pl-6 space-y-12">
+        <div className="relative space-y-10 before:absolute before:bottom-3 before:left-3 before:top-3 before:w-px before:bg-white/20 sm:space-y-12 sm:before:left-4">
 
           {experiences.map((exp, i) => (
             <motion.div
@@ -71,21 +77,19 @@ export default function Experience() {
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="relative group"
+              className="group relative grid min-w-0 grid-cols-[24px_minmax(0,1fr)] gap-4 sm:grid-cols-[32px_minmax(0,1fr)] sm:gap-5"
             >
               {/* Dot */}
-              <div className="absolute -left-[14px] top-2 h-6 w-6 rounded-full 
-                              bg-gradient-to-r from-fuchsia-500 to-cyan-400 
-                              flex items-center justify-center shadow-lg">
-                <Briefcase size={14} />
+              <div className="relative z-10 mt-2 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-400 shadow-lg sm:mx-auto">
+                <Briefcase size={13} />
               </div>
 
               {/* Card */}
-              <div className="relative p-[1.5px] rounded-2xl 
+              <div className="relative min-w-0 rounded-2xl p-[1.5px]
                               bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 
                               group-hover:scale-[1.02] transition">
 
-                <div className="rounded-2xl bg-slate-950/90 backdrop-blur-xl p-6 border border-white/10">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950/90 p-5 backdrop-blur-xl sm:p-6">
 
                   {/* Shine Effect */}
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -112,9 +116,9 @@ export default function Experience() {
                       href={exp.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-5 px-4 py-2 text-sm 
+                      className="relative z-10 mt-5 inline-flex items-center gap-2 px-4 py-2 text-sm
                                  font-medium rounded-full 
-                                 bg-gradient-to-r from-fuchsia-500 to-cyan-400 
+                                 bg-gradient-to-r from-fuchsia-700 to-cyan-700
                                  hover:scale-105 transition"
                     >
                       View Portfolio

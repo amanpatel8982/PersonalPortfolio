@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
@@ -15,25 +14,31 @@ const skills = [
   { name: "JWT", icon: "/jwt.svg", level: 75 },
 ];
 
-export default function Skills() {
+export default function Skills({ embedded = false }) {
+  const HeadingTag = embedded ? "h2" : "h1";
+
   return (
     <section
       id="skill"
-      className="relative min-h-screen overflow-hidden 
-                 bg-transparent px-4 py-24 text-white sm:px-6 lg:px-10"
+      className="page-section relative bg-transparent text-white"
     >
-      {/* Floating Glow (same as home) */}
-      <motion.div
-        animate={{ x: [0, 80, 0], y: [0, -50, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute left-0 top-20 h-60 w-60 rounded-full bg-purple-600/20 blur-3xl"
-      />
+      {!embedded && (
+        <>
+          <motion.div
+            animate={{ x: [0, 80, 0], y: [0, -50, 0] }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="pointer-events-none absolute left-0 top-20 hidden h-60 w-60 rounded-full bg-purple-600/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
 
-      <motion.div
-        animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
-        transition={{ duration: 9, repeat: Infinity }}
-        className="absolute bottom-20 right-0 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl"
-      />
+          <motion.div
+            animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
+            transition={{ duration: 9, repeat: Infinity }}
+            className="pointer-events-none absolute bottom-20 right-0 hidden h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl md:block"
+            aria-hidden="true"
+          />
+        </>
+      )}
 
       <div className="relative z-10 max-w-6xl mx-auto">
 
@@ -42,7 +47,8 @@ export default function Skills() {
           initial={{ opacity: 0, y: -40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-14"
+          viewport={{ once: true }}
+          className="mb-10 text-center sm:mb-14"
         >
           <p className="inline-flex items-center gap-2 px-5 py-2 rounded-full 
                        bg-white/10 border border-cyan-400/30 
@@ -51,28 +57,29 @@ export default function Skills() {
             My Expertise
           </p>
 
-          <h2 className="mt-5 text-4xl md:text-6xl font-black font-serif">
+          <HeadingTag className="mt-5 font-serif text-4xl font-black leading-tight sm:text-5xl md:text-6xl">
             My{" "}
             <span className="bg-gradient-to-r from-fuchsia-400 via-violet-300 to-cyan-300 bg-clip-text text-transparent">
               Skills
             </span>
-          </h2>
+          </HeadingTag>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5">
           {skills.map((skill, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
+              viewport={{ once: true }}
               whileHover={{ scale: 1.07, y: -6 }}
-              className="group relative p-[1.5px] rounded-3xl 
+              className="group relative h-full rounded-3xl p-[1.5px]
                          bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400"
             >
               {/* Glass Card */}
-              <div className="relative rounded-3xl bg-slate-950/90 backdrop-blur-xl p-5 flex flex-col items-center text-center border border-white/10">
+              <div className="relative flex h-full flex-col items-center overflow-hidden rounded-3xl border border-white/10 bg-slate-950/90 p-4 text-center backdrop-blur-xl sm:p-5">
 
                 {/* Shine effect */}
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -81,7 +88,11 @@ export default function Skills() {
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  className="h-12 w-12 mb-4 relative z-10"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 mb-4 h-11 w-11 sm:h-12 sm:w-12"
                 />
 
                 {/* Name */}
